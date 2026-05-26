@@ -1,0 +1,122 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Berita {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  content     String
+  thumbnail   String
+
+  category    String
+  author      String
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  tags        BeritaTag[]
+}
+
+model Tag {
+  id      String      @id @default(cuid())
+  name    String      @unique
+
+  berita  BeritaTag[]
+}
+
+model BeritaTag {
+  beritaId String
+  tagId    String
+
+  berita   Berita @relation(fields: [beritaId], references: [id])
+  tag      Tag    @relation(fields: [tagId], references: [id])
+
+  @@id([beritaId, tagId])
+}
+
+model PejabatStruktural {
+  id        String   @id @default(cuid())
+  nama      String
+  foto      String?  // URL foto
+  jabatan   Jabatan
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Jabatan {
+  KABAPAS
+  KASUBSI_BKD
+  KASUBSI_BKA
+  KAUR_TU
+}
+
+model Admin {
+    id       Int    @id @default(autoincrement())
+    name     String
+    email    String @unique
+    password String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Pengaduan {
+  id          String   @id @default(cuid())
+  nama        String
+  kontak      String
+  kategori    String
+  deskripsi   String
+  lampiran    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Publikasi {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+
+  fileUrl     String
+  fileName    String
+
+  createdAt   DateTime @default(now())
+}
+
+model WilayahKerja {
+  id           Int      @id @default(autoincrement())
+  
+  nama         String   @unique
+  image        String
+  klienDewasa  Int      @default(0)
+  klienAnak    Int      @default(0)
+  klienTotal   Int      @default(0)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Anggaran {
+  id              String   @id @default(cuid())
+
+  tahun           Int      @unique
+
+  totalAnggaran   BigInt
+
+  realisasi       BigInt
+
+  createdAt       DateTime @default(now())
+
+  updatedAt       DateTime @updatedAt
+}

@@ -1,0 +1,251 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { CalendarDays, User } from "lucide-react";
+import ShareButtons from "@/app/components/atoms/ShareButtons";
+
+interface Tag {
+  tag: {
+    id: string;
+    name: string;
+  };
+}
+
+interface Berita {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  thumbnail: string;
+  category: string;
+  author: string;
+  createdAt: string;
+  tags: Tag[];
+}
+
+interface Props {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+export default async function DetailBeritaPage({ params }: Props) {
+  const { id } = await params;
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/berita/${id}`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  const result = await res.json();
+
+  const berita: Berita = result.data;
+
+  // URL ARTIKEL
+  const articleUrl = `${process.env.NEXT_PUBLIC_API_URL}/berita/${id}`;
+
+  // SHARE TEXT
+  const shareText = encodeURIComponent(berita.title);
+
+  // SHARE URL
+  const whatsappUrl = `https://wa.me/?text=${shareText}%20${articleUrl}`;
+
+  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`;
+
+  // BERITA POPULER
+  const popularRes = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/berita`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  const popularResult = await popularRes.json();
+
+  const popularNews: Berita[] = popularResult.data
+    .filter((item: Berita) => item.id !== id)
+    .slice(0, 3);
+
+  return (
+    <section className="bg-[#F5F7FA] py-12">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        {/* BREADCRUMB */}
+        <div className="mb-5 flex items-center gap-2 text-sm text-gray-500">
+          <Link href="/">Beranda</Link>
+          <span>/</span>
+
+          <Link href="/berita">Berita</Link>
+
+          <span>/</span>
+
+          <span>Detail Berita</span>
+        </div>
+
+        {/* CATEGORY */}
+        <span className="rounded-full bg-tertiary px-4 py-1.5 text-xs font-semibold text-primary">
+          {berita.category}
+        </span>
+
+        {/* TITLE */}
+        <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight text-primary md:text-6xl">
+          {berita.title}
+        </h1>
+
+        {/* META */}
+        <div className="mt-6 flex flex-wrap items-center gap-6 text-sm text-gray-600">
+          <div className="flex items-center gap-2">
+            <CalendarDays size={16} />
+
+            <span>
+              {new Date(berita.createdAt).toLocaleDateString("id-ID", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <User size={16} />
+
+            <span>{berita.author}</span>
+          </div>
+        </div>
+
+        {/* IMAGE */}
+        <div className="relative mt-10 h-125 w-full overflow-hidden rounded-3xl shadow-lg">
+          <Image
+            src={berita.thumbnail}
+            alt={berita.title}
+            fill
+            priority
+            unoptimized
+            className="object-cover"
+          />
+        </div>
+
+        {/* CONTENT */}
+        <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_320px]">
+          {/* ARTICLE */}
+          <div className="rounded-3xl bg-white p-8 shadow-sm">
+            {/* EXCERPT */}
+            <p className="text-lg leading-relaxed text-gray-700">
+              {berita.excerpt}
+            </p>
+
+            {/* CONTENT */}
+            <div className="prose prose-lg mt-10 max-w-none">
+              <p>{berita.content}</p>
+            </div>
+
+            {/* TAGS */}
+            <div className="mt-10 flex flex-wrap gap-3 border-t border-gray-200 pt-6">
+              {berita.tags.map((item) => (
+                <span
+                  key={item.tag.id}
+                  className="rounded-lg bg-gray-100 px-3 py-1 text-sm text-gray-700"
+                >
+                  #{item.tag.name}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* SIDEBAR */}
+          <div className="space-y-6">
+            {/* SHARE */}
+            <div className="rounded-3xl bg-white p-6 shadow-sm">
+              <h3 className="text-2xl font-bold text-primary">
+                Bagikan Artikel
+              </h3>
+
+              <div className="mt-5 flex gap-3">
+                <ShareButtons
+                  articleUrl={articleUrl}
+                  whatsappUrl={whatsappUrl}
+                  facebookUrl={facebookUrl}
+                />
+              </div>
+            </div>
+
+            {/* BERITA POPULER */}
+            <div className="rounded-3xl bg-white p-6 shadow-sm">
+              <h3 className="text-2xl font-bold text-primary">
+                Berita Terpopuler
+              </h3>
+
+              <div className="mt-6 space-y-5">
+                {popularNews.map((item) => (
+                  <Link
+                    key={item.id}
+                    href={`/berita/${item.id}`}
+                    className="flex gap-4"
+                  >
+                    <div className="relative h-20 w-24 overflow-hidden rounded-xl">
+                      <Image
+                        src={item.thumbnail}
+                        alt={item.title}
+                        fill
+                        unoptimized
+                        className="object-cover"
+                      />
+                    </div>
+
+                    <div>
+                      <h4 className="line-clamp-2 text-sm font-semibold text-primary">
+                        {item.title}
+                      </h4>
+
+                      <p className="mt-2 text-xs text-gray-500">
+                        {new Date(item.createdAt).toLocaleDateString("id-ID")}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div
+              className="
+                rounded-3xl
+                bg-primary
+                p-8
+                text-center
+                text-white
+              "
+            >
+              <h3 className="text-3xl font-bold">Punya Pertanyaan?</h3>
+
+              <p className="mt-4 text-sm text-gray-200">
+                Tim kami siap membantu memberikan informasi terkait layanan
+                pembimbingan.
+              </p>
+
+              <Link
+                href="/pengaduan"
+                className="
+    mt-6
+    inline-block
+    rounded-xl
+    bg-tertiary
+    px-6
+    py-3
+    font-semibold
+    text-primary
+    transition
+    hover:scale-105
+  "
+              >
+                Hubungi Layanan Pengaduan
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
