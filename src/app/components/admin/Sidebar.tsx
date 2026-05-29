@@ -11,6 +11,7 @@ import {
   LocationEdit,
   Upload,
   Wallet,
+  Star,
 } from "lucide-react";
 
 import { signOut, useSession } from "next-auth/react";
@@ -46,6 +47,11 @@ export default function Sidebar() {
       name: "Anggaran",
       href: "/admin/anggaran",
       icon: Wallet,
+    },
+    {
+      name: "SPAK & SKPK",
+      href: "/admin/survey",
+      icon: Star,
     },
     {
       name: "Publikasi Dokumen",

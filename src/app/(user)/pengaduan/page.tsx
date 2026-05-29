@@ -219,6 +219,8 @@ export default function PengaduanPage() {
 
                     <option value="ADMINISTRASI">Administrasi</option>
 
+                    <option value="INFORMASI">Informasi</option>
+
                     <option value="LAINNYA">Lainnya</option>
                   </select>
                 </div>

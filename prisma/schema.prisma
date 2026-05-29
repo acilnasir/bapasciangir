@@ -120,3 +120,14 @@ model Anggaran {
 
   updatedAt       DateTime @updatedAt
 }
+
+model Survey {
+  id          String   @id @default(cuid())
+  label       String
+  title       String
+  score       Float
+  period      String
+  respondents String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

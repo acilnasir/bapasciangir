@@ -14,7 +14,7 @@ export default async function HeroSection() {
     {
       title: "Penelitian Kemasyarakatan",
       description:
-        "Penyusunan laporan litmas untuk kepentingan peradilan dan pembinaan warga binaan.",
+        "Penyusunan laporan litmas untuk kepentingan peradilan dan pembimbingan warga binaan.",
       icon: FileText,
     },
     {
@@ -26,7 +26,7 @@ export default async function HeroSection() {
     {
       title: "Pengawasan",
       description:
-        "Pemantauan rutin terhadap pelaksanaan integrasi sosial klien di masyarakat.",
+        "Pemantauan rutin terhadap pelaksanaan reintegrasi sosial klien di masyarakat.",
       icon: ShieldCheck,
     },
     {
@@ -81,14 +81,14 @@ export default async function HeroSection() {
         className="
           relative
           min-h-screen
-          bg-[url('/image/bapas.jpg')]
+          bg-[url('/image/kantor.jpg')]
           bg-cover
           bg-center
           bg-no-repeat
         "
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/65" />
 
         {/* Content */}
         <div className="relative mx-auto flex min-h-screen max-w-7xl items-center px-4 py-24 md:px-6">
@@ -96,12 +96,15 @@ export default async function HeroSection() {
             <h1 className="mt-6 text-5xl font-bold leading-tight text-neutral md:text-7xl">
               Selamat Datang di Bapas Kelas II Purwokerto
             </h1>
-
             <p className="mt-6 text-lg leading-relaxed text-[#D9E2FF]">
-              Pelayanan profesional dalam pembimbingan kemasyarakatan,
-              pendampingan klien, dan reintegrasi sosial yang humanis.
+              Melayani dengan Hati, Mengawal dengan Integritas
             </p>
 
+            <p className="text-lg leading-relaxed text-[#D9E2FF]">
+              Mewujudkan pelayanan pemasyarakatan yang humanis, menjunjung
+              tinggi integritas, serta mendukung terciptanya pemasyarakatan yang
+              pasti bermanfaat untuk masyarakat.
+            </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               {/* WHATSAPP */}
               <Link

@@ -77,9 +77,17 @@ export default function BeritaForm() {
             className="bg-neutral py-2 px-3 w-full rounded-md outline-none mb-4"
           >
             <option value="">Pilih kategori</option>
-            <option value="Kegiatan">Kegiatan</option>
+            <option value="Events & Ceremonies">Events & Ceremonies</option>
             <option value="Pengumuman">Pengumuman</option>
             <option value="Sosialisasi">Sosialisasi</option>
+            <option value="Pengabdian Kepada Masyarakat">
+              Pengabdian Kepada Masyarakat
+            </option>
+            <option value="Inovasi">Inovasi</option>
+            <option value="Prestasi">Prestasi</option>
+            <option value="Kunjungan Kerja">Kunjungan Kerja</option>
+            <option value="Sosial">Sosial</option>
+            <option value="Kerjasama">Pendidikan</option>
           </select>
         </div>
         {/* AUTHOR */}

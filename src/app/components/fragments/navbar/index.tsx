@@ -26,6 +26,7 @@ export default function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <div className="flex items-center gap-2">
+          <Image src="/image/imipas.png" alt="logo" width={27} height={27} />
           <Image
             src="/image/logo_pemasyarakatan.png"
             alt="logo"
@@ -145,11 +146,17 @@ export default function Navbar() {
 
           {/* Mobile Buttons */}
           <div className="flex flex-col gap-3 pt-4">
-            <button className="rounded-lg bg-neutral px-6 py-3 text-primary">
+            <button
+              onClick={() => router.push("/wilayah-kerja")}
+              className="rounded-lg bg-neutral px-6 py-3 text-primary"
+            >
               Wilayah Kerja
             </button>
 
-            <button className="rounded-lg bg-primary px-6 py-3 text-neutral">
+            <button
+              onClick={() => router.push("/login")}
+              className="rounded-lg bg-primary px-6 py-3 text-neutral"
+            >
               Masuk
             </button>
           </div>
