@@ -87,7 +87,8 @@ export default function BeritaForm() {
             <option value="Prestasi">Prestasi</option>
             <option value="Kunjungan Kerja">Kunjungan Kerja</option>
             <option value="Sosial">Sosial</option>
-            <option value="Kerjasama">Pendidikan</option>
+            <option value="Kerja Sama">Kerja Sama</option>
+            <option value="Pendidikan">Pendidikan</option>
           </select>
         </div>
         {/* AUTHOR */}

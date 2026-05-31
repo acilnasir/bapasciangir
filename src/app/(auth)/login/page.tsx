@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -46,17 +47,37 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f7fb] flex items-center justify-center px-6">
+    <div className="relative min-h-screen bg-neutral flex items-center justify-center px-6">
+      <Link
+        href="/"
+        className="
+    absolute
+    top-6
+    left-6
+    flex
+    items-center
+    gap-2
+    rounded-md
+    bg-primary
+    px-4
+    py-2
+    text-white
+    hover:shadow-md
+  "
+      >
+        <ArrowLeft size={18} />
+        Beranda
+      </Link>
       <div className="w-full max-w-md">
         {/* CARD */}
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
           {/* HEADER */}
           <div className="text-center mb-10">
-            <div className="w-20 h-20 mx-auto rounded-full bg-[#071952] flex items-center justify-center mb-5">
+            <div className="w-20 h-20 mx-auto rounded-full bg-primary flex items-center justify-center mb-5">
               <Lock className="text-white" size={34} />
             </div>
 
-            <h1 className="text-3xl font-bold text-[#071952]">Login Pegawai</h1>
+            <h1 className="text-3xl font-bold text-primary">Login Pegawai</h1>
 
             <p className="text-gray-500 mt-3">
               Sistem Informasi Bapas Purwokerto
@@ -94,7 +115,7 @@ export default function LoginPage() {
                       email: e.target.value,
                     })
                   }
-                  className="w-full h-14 rounded-2xl border border-gray-200 pl-12 pr-4 outline-none focus:border-[#071952] transition-all"
+                  className="w-full h-14 rounded-2xl border border-gray-200 pl-12 pr-4 outline-none focus:border-primary transition-all"
                 />
               </div>
             </div>
@@ -121,7 +142,7 @@ export default function LoginPage() {
                       password: e.target.value,
                     })
                   }
-                  className="w-full h-14 rounded-2xl border border-gray-200 pl-12 pr-14 outline-none focus:border-[#071952] transition-all"
+                  className="w-full h-14 rounded-2xl border border-gray-200 pl-12 pr-14 outline-none focus:border-primary transition-all"
                 />
 
                 <button
@@ -138,7 +159,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full h-14 bg-[#071952] hover:bg-[#0b2c7d] text-white rounded-2xl font-semibold transition-all disabled:opacity-70"
+              className="w-full h-14 bg-primary hover:bg-[#0b2c7d] text-white rounded-2xl font-semibold transition-all disabled:opacity-70"
             >
               {loading ? "Loading..." : "Masuk"}
             </button>

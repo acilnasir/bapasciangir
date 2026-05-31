@@ -260,7 +260,7 @@ export default function PublikasiPage() {
             </div>
 
             {/* GRID */}
-            <div className="mt-8 grid gap-5 md:grid-cols-2">
+            <div className="mt-8 space-y-4">
               {paginatedData.length === 0 ? (
                 <div className="col-span-full rounded-2xl border border-gray-200 bg-white py-16 text-center text-gray-500">
                   Tidak ada publikasi ditemukan

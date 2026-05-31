@@ -72,7 +72,7 @@ export default async function BeritaSection() {
                 </span>
 
                 {/* TITLE */}
-                <h3 className="mt-4 line-clamp-2 text-xl font-bold leading-snug text-primary transition group-hover:text-tertiary">
+                <h3 className="mt-4 line-clamp-2 text-lg font-bold leading-snug text-primary transition group-hover:text-tertiary">
                   {item.title}
                 </h3>
 
