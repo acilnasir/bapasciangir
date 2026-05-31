@@ -35,6 +35,13 @@ export default function FooterSection() {
               </Link>
 
               <Link
+                href="https://www.threads.com/@bapaspwt"
+                className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
+              >
+                <FaThreads size={20} />
+              </Link>
+
+              <Link
                 href="https://www.facebook.com/share/1BLvgbYe6B/?mibextid=wwXIfr"
                 className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
               >
@@ -148,8 +155,6 @@ export default function FooterSection() {
                 </Link>
                 <Link
                   href="https://www.threads.com/@bapaspwt"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300"
                 >
                   <FaThreads size={18} />
