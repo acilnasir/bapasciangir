@@ -8,6 +8,7 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
+  SlidersHorizontal,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { API_URL } from "../../../../lib/api";
@@ -63,6 +64,8 @@ export default function BeritaPage() {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [showFilter, setShowFilter] = useState(false);
+
   const itemsPerPage = 6;
 
   useEffect(() => {
@@ -101,10 +104,22 @@ export default function BeritaPage() {
 
   const featuredArticle = filteredArticles[0];
 
-  const categories = ["Semua", "Pengumuman", "Kegiatan", "Sosialisasi"];
+  const categories = [
+    "Semua",
+    "Pengumuman",
+    "Sosial",
+    "Sosialisai",
+    "Event & Ceremonies",
+    "Pengabdian kepada Masyarakat",
+    "Inovasi",
+    "Prestasi",
+    "Kunjungan Kerja",
+    "Pendidikan",
+    "Kerja Sama",
+  ];
 
   return (
-    <section className="min-h-screen bg-[#F5F7FA]">
+    <section className="min-h-screen bg-neutral">
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-6">
         {/* HERO */}
         {featuredArticle && (
@@ -129,7 +144,7 @@ export default function BeritaPage() {
                   KABAR TERKINI
                 </span>
 
-                <h1 className="mt-5 text-3xl font-bold leading-tight text-white md:text-5xl">
+                <h1 className="mt-5 text-lg font-bold leading-tight text-white md:text-3xl">
                   {featuredArticle.title}
                 </h1>
 
@@ -142,29 +157,9 @@ export default function BeritaPage() {
         )}
 
         {/* FILTER */}
-        <div className="mt-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          {/* CATEGORY */}
-          <div className="flex flex-wrap gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => {
-                  setSelectedCategory(category);
-                  setCurrentPage(1);
-                }}
-                className={`rounded-full px-5 py-2 text-sm transition ${
-                  selectedCategory === category
-                    ? "bg-primary font-medium text-white"
-                    : "border border-gray-300 bg-white text-gray-700 hover:border-primary hover:text-primary"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
+        <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center">
           {/* SEARCH */}
-          <div className="relative w-full md:w-80">
+          <div className="relative flex-1">
             <Search
               size={18}
               className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
@@ -179,19 +174,79 @@ export default function BeritaPage() {
                 setCurrentPage(1);
               }}
               className="
-                w-full
-                rounded-xl
-                border
-                border-gray-300
-                bg-white
-                py-3
-                pl-11
-                pr-4
-                outline-none
-                transition
-                focus:border-primary
-              "
+        w-full
+        rounded-xl
+        bg-white
+        py-3
+        pl-11
+        pr-4
+        outline-none
+      "
             />
+          </div>
+
+          {/* FILTER BUTTON */}
+          <div className="relative">
+            <button
+              onClick={() => setShowFilter(!showFilter)}
+              className="
+        flex
+        items-center
+        gap-2
+        rounded-xl
+      text-white
+        px-5
+        py-3
+        bg-primary
+        transition
+        hover:bg-primary/40
+      "
+            >
+              <SlidersHorizontal className="text-white" size={18} />
+              Filter
+            </button>
+
+            {/* DROPDOWN */}
+            {showFilter && (
+              <div
+                className="
+          absolute
+          right-0
+          top-14
+          z-50
+          w-72
+          rounded-2xl
+          bg-white
+          p-5
+          shadow-xl
+        "
+              >
+                <h3 className="mb-4 text-sm font-semibold text-primary">
+                  Kategori Berita
+                </h3>
+
+                <div className="space-y-3">
+                  {categories.map((category) => (
+                    <label
+                      key={category}
+                      className="flex cursor-pointer items-center gap-3 text-sm"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedCategory === category}
+                        onChange={() => {
+                          setSelectedCategory(category);
+                          setCurrentPage(1);
+                          setShowFilter(false);
+                        }}
+                      />
+
+                      {category}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -239,7 +294,7 @@ export default function BeritaPage() {
                 </div>
 
                 {/* TITLE */}
-                <h2 className="line-clamp-2 text-3xl font-bold leading-snug text-primary">
+                <h2 className="line-clamp-2 text-xl font-bold leading-snug text-primary">
                   {article.title}
                 </h2>
 

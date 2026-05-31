@@ -8,6 +8,7 @@ import {
   CalendarDays,
   BadgeAlert,
   Trash2,
+  Download,
 } from "lucide-react";
 
 import Image from "next/image";
@@ -114,21 +115,31 @@ export default function AdminPengaduanPage() {
               Kelola seluruh laporan pengaduan masyarakat.
             </p>
           </div>
+          <div className="flex flex-col gap-3 md:flex-row">
+            <button
+              onClick={() => {
+                window.open("/api/pengaduan/export", "_blank");
+              }}
+              className="flex items-center justify-center gap-2 rounded-2xl bg-primary px-5 py-3 font-medium text-white transition hover:bg-primary/50"
+            >
+              <Download size={18} />
+              Download Excel
+            </button>
 
-          {/* SEARCH */}
-          <div className="relative w-full md:w-80">
-            <Search
-              size={18}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-            />
+            <div className="relative w-full md:w-80">
+              <Search
+                size={18}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+              />
 
-            <input
-              type="text"
-              placeholder="Cari pengaduan..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="h-12 w-full rounded-2xl border border-gray-200 bg-white pl-11 pr-4 outline-none transition-all focus:border-primary"
-            />
+              <input
+                type="text"
+                placeholder="Cari pengaduan..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="h-12 w-full rounded-2xl border border-gray-200 bg-white pl-11 pr-4 outline-none transition-all focus:border-primary"
+              />
+            </div>
           </div>
         </div>
 

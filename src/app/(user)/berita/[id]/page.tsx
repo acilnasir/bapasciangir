@@ -70,7 +70,7 @@ export default async function DetailBeritaPage({ params }: Props) {
     .slice(0, 3);
 
   return (
-    <section className="bg-[#F5F7FA] py-12">
+    <section className="bg-neutral py-12">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* BREADCRUMB */}
         <div className="mb-5 flex items-center gap-2 text-sm text-gray-500">
@@ -90,7 +90,7 @@ export default async function DetailBeritaPage({ params }: Props) {
         </span>
 
         {/* TITLE */}
-        <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight text-primary md:text-6xl">
+        <h1 className="mt-6 max-w-4xl text-xl font-bold leading-tight text-primary md:text-4xl">
           {berita.title}
         </h1>
 
@@ -137,7 +137,7 @@ export default async function DetailBeritaPage({ params }: Props) {
             </p>
 
             {/* CONTENT */}
-            <div className="prose prose-lg mt-10 max-w-none">
+            <div className="prose prose-lg mt-10 max-w-none text-gray-700 text-justify">
               <p>{berita.content}</p>
             </div>
 
@@ -184,7 +184,7 @@ export default async function DetailBeritaPage({ params }: Props) {
                     href={`/berita/${item.id}`}
                     className="flex gap-4"
                   >
-                    <div className="relative h-20 w-24 overflow-hidden rounded-xl">
+                    <div className="relative overflow-hidden w-20 rounded-md">
                       <Image
                         src={item.thumbnail}
                         alt={item.title}
@@ -226,7 +226,7 @@ export default async function DetailBeritaPage({ params }: Props) {
               </p>
 
               <Link
-                href="/pengaduan"
+                href="https://wa.me/6285138212168"
                 className="
     mt-6
     inline-block

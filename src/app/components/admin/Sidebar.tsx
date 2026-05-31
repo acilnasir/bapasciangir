@@ -12,6 +12,8 @@ import {
   Upload,
   Wallet,
   Star,
+  User,
+  TrendingUp,
 } from "lucide-react";
 
 import { signOut, useSession } from "next-auth/react";
@@ -39,6 +41,11 @@ export default function Sidebar() {
       icon: Users,
     },
     {
+      name: "Profil KABAPAS",
+      href: "/admin/profil-kabapas",
+      icon: User,
+    },
+    {
       name: "Pengaduan",
       href: "/admin/pengaduan",
       icon: BiVolumeFull,
@@ -47,6 +54,11 @@ export default function Sidebar() {
       name: "Anggaran",
       href: "/admin/anggaran",
       icon: Wallet,
+    },
+    {
+      name: "Infografis",
+      href: "/admin/infografis",
+      icon: TrendingUp,
     },
     {
       name: "SPAK & SKPK",

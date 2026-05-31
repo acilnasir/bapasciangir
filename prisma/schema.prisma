@@ -131,3 +131,207 @@ model Survey {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+model ProfilKepalaBapas {
+  id          String   @id @default(cuid())
+
+  nama        String
+  jabatan     String
+  pangkat     String
+  pendidikan  String
+  foto        String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  riwayatPendidikan Pendidikan[]
+  riwayatJabatan    JabatanRiwayat[]
+  penghargaan       Penghargaan[]
+  diklat            Diklat[]
+  organisasi        Organisasi[]
+  pengalaman        PengalamanInternasional[]
+  prestasi          Prestasi[]
+  kinerja           Kinerja[]
+}
+model Pendidikan {
+  id        String   @id @default(cuid())
+  nama      String
+  tahun     String
+  jenjang   String
+  jurusan   String
+
+  profilId  String
+  profil    ProfilKepalaBapas @relation(fields: [profilId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model JabatanRiwayat {
+  id        String   @id @default(cuid())
+  nama      String
+  tahun     String
+
+  profilId  String
+  profil    ProfilKepalaBapas @relation(fields: [profilId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Penghargaan {
+  id        String   @id @default(cuid())
+  nama      String
+  tahun     String
+
+  profilId  String
+  profil    ProfilKepalaBapas @relation(fields: [profilId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Diklat {
+  id        String   @id @default(cuid())
+  nama      String
+  tahun     String
+  profilId  String
+  profil    ProfilKepalaBapas @relation(fields: [profilId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Organisasi {
+  id        String   @id @default(cuid())
+  nama      String
+  tahun     String
+  profilId  String
+  profil    ProfilKepalaBapas @relation(fields: [profilId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PengalamanInternasional {
+  id        String   @id @default(cuid())
+  nama      String
+  tahun     String
+  profilId  String
+  profil    ProfilKepalaBapas @relation(fields: [profilId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Prestasi {
+  id        String   @id @default(cuid())
+  nama      String
+  profilId  String
+  profil    ProfilKepalaBapas @relation(fields: [profilId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Kinerja {
+  id              String   @id @default(cuid())
+  nama            String
+  hasil           String
+  profilId        String
+  profil          ProfilKepalaBapas @relation(fields: [profilId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Dashboard {
+  id String @id @default(cuid())
+
+  jenisPidana JenisPidana[]
+  klien       KlienSummary?
+  litmas      Litmas?
+  pendampingan Pendampingan?
+  sdm         SDM?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+model JenisPidana {
+  id      String @id @default(cuid())
+  label   String
+  value   Int
+
+  dashboardId String
+  dashboard   Dashboard @relation(fields: [dashboardId], references: [id])
+}
+
+model KlienSummary {
+  id String @id @default(cuid())
+
+  apelCB   Int @default(0)
+  apelCMB  Int @default(0)
+  apelPB   Int @default(0)
+  apelPIB  Int @default(0)
+
+  baruCB   Int @default(0)
+  baruCMB  Int @default(0)
+  baruPB   Int @default(0)
+  baruPIB  Int @default(0)
+
+  dashboardId String @unique
+  dashboard   Dashboard @relation(fields: [dashboardId], references: [id])
+}
+
+model Litmas {
+  id String @id @default(cuid())
+
+  // DEWASA
+  dewasaPB            Int @default(0)
+  dewasaCB            Int @default(0)
+  dewasaCMB           Int @default(0)
+  dewasaPembinaanAwal Int @default(0)
+  dewasaPerubahan     Int @default(0)
+  dewasaMutasi        Int @default(0)
+  dewasaPraAjudikasi  Int @default(0)
+
+  // ANAK
+  anakSidang          Int @default(0)
+  anakDiversi         Int @default(0)
+  anakPB              Int @default(0)
+  anakCB              Int @default(0)
+  anakPembinaanAwal   Int @default(0)
+  anakKorban          Int @default(0)
+  anakKurang12Tahun   Int @default(0)
+
+  dashboardId String @unique
+  dashboard   Dashboard @relation(fields: [dashboardId], references: [id])
+}
+
+model Pendampingan {
+  id String @id @default(cuid())
+
+  diversi     Int @default(0)
+  sidang      Int @default(0)
+  pengakhiran Int @default(0)
+  pencabutan  Int @default(0)
+  pelimpahan  Int @default(0)
+
+  dashboardId String @unique
+  dashboard   Dashboard @relation(fields: [dashboardId], references: [id])
+}
+
+model SDM {
+  id String @id @default(cuid())
+
+  hadir           Int @default(0)
+  cuti            Int @default(0)
+  dinasLuar       Int @default(0)
+  posBapas        Int @default(0)
+  tanpaKeterangan Int @default(0)
+
+  dashboardId String @unique
+  dashboard   Dashboard @relation(fields: [dashboardId], references: [id])
+}

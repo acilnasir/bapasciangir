@@ -1,10 +1,10 @@
 import {
   FileText,
-  Gavel,
   ShieldCheck,
   Users,
   MapPinned,
   BadgeCheck,
+  Handshake,
 } from "lucide-react";
 import Link from "next/link";
 import Icon from "../../icons";
@@ -30,10 +30,10 @@ export default async function HeroSection() {
       icon: ShieldCheck,
     },
     {
-      title: "Sidang TPP",
+      title: "Pendampingan",
       description:
-        "Penyelenggaraan sidang tim pengamat pemasyarakatan untuk menentukan program klien.",
-      icon: Gavel,
+        "Mengawal hak-hak Anak yang Berhadapan dengan Hukum (ABH) dalam setiap tahapan peradilan pidana",
+      icon: Handshake,
     },
   ];
 

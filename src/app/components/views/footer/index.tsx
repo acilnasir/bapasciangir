@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
+import { FaThreads } from "react-icons/fa6";
 
 export default function FooterSection() {
   return (
@@ -145,28 +146,32 @@ export default function FooterSection() {
                 >
                   <FaInstagram size={18} />
                 </Link>
-
+                <Link
+                  href="https://www.threads.com/@bapaspwt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300"
+                >
+                  <FaThreads size={18} />
+                </Link>
                 <Link
                   href="https://www.tiktok.com/@bapas_purwokerto?_t=ZS-8zxONV2Utfd&_r=1"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300"
                 >
                   <FaTiktok size={18} />
                 </Link>
-
                 <Link
                   href="https://x.com/bapas2_pwt?s=21"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300"
                 >
                   <FaX size={18} />
                 </Link>
-
                 <Link
                   href="https://www.facebook.com/share/1BLvgbYe6B/?mibextid=wwXIfr"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300"
                 >
                   <FaFacebookF size={18} />
                 </Link>
-
                 <Link
                   href="https://youtube.com/@bapaspurwokerto4891?si=qPFt068MzJXDhKfC"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300"

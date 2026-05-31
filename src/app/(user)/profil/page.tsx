@@ -13,6 +13,24 @@ import { FaMedal } from "react-icons/fa6";
 import { LuChartNoAxesCombined } from "react-icons/lu";
 
 export default async function ProfilPage() {
+  async function getProfilKepalaBapas() {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/profil-kabapas`,
+      {
+        cache: "no-store",
+      },
+    );
+
+    if (!res.ok) return null;
+
+    const result = await res.json();
+
+    return result.data || null;
+  }
+
+  const profil = await getProfilKepalaBapas();
+  console.log("PROFIL:", profil);
+
   async function getPejabat() {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/struktural`,
@@ -90,9 +108,9 @@ export default async function ProfilPage() {
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="relative h-75 w-full overflow-hidden rounded-2xl shadow-lg md:h-105">
+        <div className="relative h-75 w-full overflow-hidden rounded-2xl shadow-md md:h-105">
           <Image
-            src="/image/kantor.jpg"
+            src="/image/foto 2.png"
             alt="Gedung Bapas"
             fill
             className="object-cover"
@@ -265,6 +283,7 @@ export default async function ProfilPage() {
         </div>
       </section>
 
+      {/* PROFIL SINGKAT */}
       <section className=" bg-neutral py-10">
         {/* HEADER */}
         <div className="py-10 text-center">
@@ -276,7 +295,7 @@ export default async function ProfilPage() {
         </div>
 
         {/* CARD */}
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm mx-5 md:mx-20">
+        <div className="overflow-hidden rounded-xl bg-white mx-5 md:mx-20">
           {/* TOP HEADER */}
           <div className="bg-primary px-5 py-5 md:px-7">
             <div className="flex flex-col gap-5 md:flex-row md:items-center">
@@ -284,8 +303,11 @@ export default async function ProfilPage() {
               <div className="flex justify-center md:block">
                 <div className="overflow-hidden rounded-lg border border-white/10 bg-white p-1 shadow-md">
                   <Image
-                    src="/images/kepala-bapas.jpg"
-                    alt="Kepala Bapas"
+                    src={profil?.foto || "/person.jpg"}
+                    alt={profil?.nama || "Kepala Bapas"}
+                    width={96}
+                    height={128}
+                    unoptimized
                     className="h-28 w-20 rounded-md object-cover md:h-32 md:w-24"
                   />
                 </div>
@@ -294,23 +316,23 @@ export default async function ProfilPage() {
               {/* INFO */}
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-3xl font-extrabold tracking-tight text-white">
-                  NASIRUDIN, S.H., M.H.
+                  {profil?.nama}
                 </h3>
 
                 <p className="mt-1 text-sm font-semibold text-tertiary">
-                  Kepala Balai Pemasyarakatan Kelas II Purwokerto
+                  {profil?.jabatan}
                 </p>
 
                 {/* BADGES */}
                 <div className="mt-4 flex flex-wrap justify-center gap-2 md:justify-start">
                   <div className="flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs text-white backdrop-blur">
                     <BriefcaseBusiness size={14} />
-                    Penata Tk. I / IV-b
+                    {profil?.pangkat}
                   </div>
 
                   <div className="flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs text-white backdrop-blur">
                     <GraduationCap size={14} />
-                    S1 Ilmu Hukum - S2 Ilmu Hukum
+                    {profil?.pendidikan}
                   </div>
                 </div>
               </div>
@@ -330,19 +352,31 @@ export default async function ProfilPage() {
               </div>
 
               <ul className="space-y-3 text-sm text-gray-600">
-                <li className="border-t border-gray-200 pt-3">
-                  Universitas Mathlaul Anwar – Ilmu Hukum
-                  <span className="mt-1 block text-xs text-gray-400">
-                    S1 (2010)
-                  </span>
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  STIH IBLAM – Ilmu Hukum
-                  <span className="mt-1 block text-xs text-gray-400">
-                    S2 (2013)
-                  </span>
-                </li>
+                {profil?.riwayatPendidikan?.length ? (
+                  profil.riwayatPendidikan.map(
+                    (item: {
+                      id: string;
+                      nama: string;
+                      tahun: string;
+                      jurusan: string;
+                      jenjang: string;
+                    }) => (
+                      <li
+                        key={item.id}
+                        className="border-t border-gray-200 pt-3"
+                      >
+                        {item.nama} - {item.jurusan}
+                        <span className="mt-1 block text-xs text-gray-400">
+                          {item.jenjang} - {item.tahun}
+                        </span>
+                      </li>
+                    ),
+                  )
+                ) : (
+                  <li className="border-t border-gray-200 pt-3 text-gray-400">
+                    Belum ada data pendidikan
+                  </li>
+                )}
               </ul>
             </div>
 
@@ -357,17 +391,23 @@ export default async function ProfilPage() {
               </div>
 
               <ul className="space-y-3 text-sm text-gray-600">
-                <li className="border-t border-gray-200 pt-3">
-                  2018 Pembimbing Kemasyarakatan – Bapas Kelas II Serang
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  2020 Kepala Subseksi BKA – Bapas Kelas I Purwokerto
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  2023 Kepala Bapas Kelas II Cirebon
-                </li>
+                {profil?.riwayatJabatan?.length ? (
+                  profil.riwayatJabatan.map(
+                    (item: { id: string; nama: string; tahun: string }) => (
+                      <li
+                        key={item.id}
+                        className="border-t border-gray-200 pt-3"
+                      >
+                        {item.nama}{" "}
+                        <span className="text-gray-400">{item.tahun}</span>
+                      </li>
+                    ),
+                  )
+                ) : (
+                  <li className="border-t border-gray-200 pt-3 text-gray-400">
+                    Belum ada data pendidikan
+                  </li>
+                )}
               </ul>
             </div>
 
@@ -382,17 +422,23 @@ export default async function ProfilPage() {
               </div>
 
               <ul className="space-y-3 text-sm text-gray-600">
-                <li className="border-t border-gray-200 pt-3">
-                  Satyalancana Karya Satya X – Presiden RI (2015)
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  Pegawai Teladan Kemenkumham (2021)
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  Satyalancana Karya Satya XX – Presiden RI (2024)
-                </li>
+                {profil?.penghargaan?.length ? (
+                  profil.penghargaan.map(
+                    (item: { id: string; nama: string; tahun: string }) => (
+                      <li
+                        key={item.id}
+                        className="border-t border-gray-200 pt-3"
+                      >
+                        {item.nama}{" "}
+                        <span className="text-gray-400">{item.tahun}</span>
+                      </li>
+                    ),
+                  )
+                ) : (
+                  <li className="border-t border-gray-200 pt-3 text-gray-400">
+                    Belum ada data penghargaan
+                  </li>
+                )}
               </ul>
             </div>
 
@@ -407,17 +453,23 @@ export default async function ProfilPage() {
               </div>
 
               <ul className="space-y-3 text-sm text-gray-600">
-                <li className="border-t border-gray-200 pt-3">
-                  Pendidikan Dasar Pemasyarakatan – Pengayoman (2010)
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  PKP Leadership for Menengah (2020)
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  Training of Facilitator Implementasi KUM – Kemenkumham
-                </li>
+                {profil?.diklat?.length ? (
+                  profil.diklat.map(
+                    (item: { id: string; nama: string; tahun: string }) => (
+                      <li
+                        key={item.id}
+                        className="border-t border-gray-200 pt-3"
+                      >
+                        {item.nama}{" "}
+                        <span className="text-gray-400">{item.tahun}</span>
+                      </li>
+                    ),
+                  )
+                ) : (
+                  <li className="border-t border-gray-200 pt-3 text-gray-400">
+                    Belum ada data penghargaan
+                  </li>
+                )}
               </ul>
             </div>
 
@@ -432,17 +484,23 @@ export default async function ProfilPage() {
               </div>
 
               <ul className="space-y-3 text-sm text-gray-600">
-                <li className="border-t border-gray-200 pt-3">
-                  IPKJI – Jabar – 2017–2019
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  IPKJI – Jakarta – 2021–2023
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  Yayasan Semesta Moral Indonesia – 2022–sekarang
-                </li>
+                {profil?.organisasi?.length ? (
+                  profil.organisasi.map(
+                    (item: { id: string; nama: string; tahun: string }) => (
+                      <li
+                        key={item.id}
+                        className="border-t border-gray-200 pt-3"
+                      >
+                        {item.nama}{" "}
+                        <span className="text-gray-400">{item.tahun}</span>
+                      </li>
+                    ),
+                  )
+                ) : (
+                  <li className="border-t border-gray-200 pt-3 text-gray-400">
+                    Belum ada data organisasi
+                  </li>
+                )}
               </ul>
             </div>
 
@@ -457,22 +515,28 @@ export default async function ProfilPage() {
               </div>
 
               <ul className="space-y-3 text-sm text-gray-600">
-                <li className="border-t border-gray-200 pt-3">
-                  Thailand – Asia Pacific Correctional Juvenile Justice (2015)
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  Australia – Promoting Transparency and Accountability
-                </li>
-
-                <li className="border-t border-gray-200 pt-3">
-                  Thailand – SOSIAL Regional Correctional Conference
-                </li>
+                {profil?.pengalaman?.length ? (
+                  profil.pengalaman.map(
+                    (item: { id: string; nama: string; tahun: string }) => (
+                      <li
+                        key={item.id}
+                        className="border-t border-gray-200 pt-3"
+                      >
+                        {item.nama}{" "}
+                        <span className="text-gray-400">{item.tahun}</span>
+                      </li>
+                    ),
+                  )
+                ) : (
+                  <li className="border-t border-gray-200 pt-3 text-gray-400">
+                    Belum ada data Pengalaman Internasional
+                  </li>
+                )}
               </ul>
             </div>
 
             {/* PRESTASI */}
-            <div className="md:col-span-2 xl:col-span-1">
+            <div>
               <div className="mb-4 flex items-center gap-2">
                 <FaMedal className="text-sm text-tertiary" />
 
@@ -481,47 +545,60 @@ export default async function ProfilPage() {
                 </h4>
               </div>
 
-              <div className="space-y-4">
-                <ul className="space-y-3 text-sm text-gray-600">
-                  <li className="border-t border-gray-200 pt-3">
-                    Tim penyusun modul, instruktur, dan regulasi
+              <ul className="space-y-3 text-sm text-gray-600">
+                {profil?.prestasi?.length ? (
+                  profil.prestasi.map(
+                    (item: { id: string; nama: string; tahun: string }) => (
+                      <li
+                        key={item.id}
+                        className="border-t border-gray-200 pt-3"
+                      >
+                        {item.nama}
+                      </li>
+                    ),
+                  )
+                ) : (
+                  <li className="border-t border-gray-200 pt-3 text-gray-400">
+                    Belum ada data Prestasi Menonjol
                   </li>
+                )}
+              </ul>
+            </div>
 
-                  <li className="border-t border-gray-200 pt-3">
-                    Bidang pemasyarakatan tingkat nasional dan internasional.
-                  </li>
-                </ul>
+            {/* KINERJA */}
+            <div className="bg-neutral border-gray-200 p-2 rounded-md">
+              <div className="mb-4 flex items-center gap-2">
+                <LuChartNoAxesCombined className="text-tertiary" size={16} />
 
-                <div className="rounded-xl border border-neutral-200 bg-neutral p-4 mt-8">
-                  <div className="">
-                    <div className="flex items-center">
-                      <div className="flex h-10 w-10 items-center justify-center  text-tertiary">
-                        <LuChartNoAxesCombined size={18} />
-                      </div>
-
-                      <div className="">
-                        <p className="text-sm font-bold uppercase tracking-wide text-primary">
-                          Kinerja
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-between space-y-3 text-sm text-gray-600">
-                      <p className="text-sm text-gray-600">Rekam Jejak</p>
-                      <div className="bg-green-200 px-3 py-1 rounded-md">
-                        <p className="font-bold text-green-600">BAIK</p>
-                      </div>
-                    </div>
-                    <div className="flex justify-between ">
-                      <p className="text-sm text-gray-600">PPKP 2025</p>
-
-                      <p className="font-bold text-primary">
-                        Di atas ekspektasi
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <h4 className="text-sm font-bold uppercase tracking-wide text-primary">
+                  Kinerja
+                </h4>
               </div>
+
+              {profil?.kinerja?.length ? (
+                <div className="space-y-3">
+                  {profil.kinerja.map(
+                    (item: { id: string; nama: string; hasil: string }) => (
+                      <div
+                        key={item.id}
+                        className="flex items-center justify-between py-3"
+                      >
+                        <p className="text-sm text-gray-600">{item.nama}</p>
+
+                        <div className="rounded-md bg-primary/10 px-3 py-1">
+                          <p className="text-xs font-bold text-primary">
+                            {item.hasil}
+                          </p>
+                        </div>
+                      </div>
+                    ),
+                  )}
+                </div>
+              ) : (
+                <p className="border-t border-gray-200 pt-3 text-sm text-gray-400">
+                  Belum ada data kinerja
+                </p>
+              )}
             </div>
           </div>
         </div>

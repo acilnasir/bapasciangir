@@ -154,7 +154,7 @@ export default function ResultSurveySection() {
   }, []);
 
   return (
-    <section className="py-16">
+    <section className="py-10">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* HEADER */}
         <div className="mb-10">
@@ -168,9 +168,31 @@ export default function ResultSurveySection() {
           </p>
         </div>
 
+        {data.length > 0 && (
+          <div className="my-8 flex flex-col gap-4 rounded-lg border border-neutral-200 bg-neutral px-6 py-5 text-sm text-gray-600 md:flex-row md:items-center md:justify-between">
+            {/* PERIODE */}
+            <div className="flex items-center gap-2">
+              <IoCalendarNumberOutline size={20} />
+
+              <span className="font-semibold text-primary">Periode:</span>
+
+              {data[0].period}
+            </div>
+
+            {/* RESPONDENTS */}
+            <div className="flex items-center gap-2">
+              <Users2 size={20} />
+              <span className="font-semibold text-primary">
+                Jumlah Responden:
+              </span>
+              {data[0].respondents} Orang
+            </div>
+          </div>
+        )}
+
         {/* LOADING */}
         {loading ? (
-          <div className="flex items-center justify-center py-20">
+          <div className="flex items-center justify-center">
             <div className="flex items-center gap-3 text-gray-500">
               <svg
                 className="h-5 w-5 animate-spin"
@@ -209,29 +231,6 @@ export default function ResultSurveySection() {
                 />
               ))}
             </div>
-
-            {/* FOOTER */}
-            {data.length > 0 && (
-              <div className="mt-8 flex flex-col gap-4 rounded-lg border border-neutral-200 bg-neutral px-6 py-5 text-sm text-gray-600 md:flex-row md:items-center md:justify-between">
-                {/* PERIODE */}
-                <div className="flex items-center gap-2">
-                  <IoCalendarNumberOutline size={20} />
-
-                  <span className="font-semibold text-primary">Periode:</span>
-
-                  {data[0].period}
-                </div>
-
-                {/* RESPONDENTS */}
-                <div className="flex items-center gap-2">
-                  <Users2 size={20} />
-                  <span className="font-semibold text-primary">
-                    Jumlah Responden:
-                  </span>
-                  {data[0].respondents} Orang
-                </div>
-              </div>
-            )}
           </>
         )}
       </div>
