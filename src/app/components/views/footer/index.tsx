@@ -26,7 +26,7 @@ export default function FooterSection() {
             </p>
 
             {/* SOCIAL ICON */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-2">
               <Link
                 href="https://www.instagram.com/bapaspwt?igsh=eDYxa2VwenM1bjNq&utm_source=qr"
                 className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
