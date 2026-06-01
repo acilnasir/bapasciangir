@@ -13,7 +13,6 @@ import {
   Wallet,
   Star,
   User,
-  TrendingUp,
 } from "lucide-react";
 
 import { signOut, useSession } from "next-auth/react";
@@ -55,11 +54,7 @@ export default function Sidebar() {
       href: "/admin/anggaran",
       icon: Wallet,
     },
-    {
-      name: "Infografis",
-      href: "/admin/infografis",
-      icon: TrendingUp,
-    },
+
     {
       name: "SPAK & SKPK",
       href: "/admin/survey",
