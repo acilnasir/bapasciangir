@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     default: "Bapas Purwokerto",
     template: "%s | Bapas Purwokerto",
   },
+  metadataBase: new URL("https://bapaspurwokerto.id"),
+
+  applicationName: "Bapas Purwokerto",
+
+  category: "Government",
+
   description:
     "Website resmi Balai Pemasyarakatan Kelas II Purwokerto. Informasi layanan, profil, dan kegiatan pembimbingan kemasyarakatan.",
   keywords: [
@@ -29,9 +35,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Bapas Purwokerto",
     description: "Website resmi Balai Pemasyarakatan Kelas II Purwokerto.",
-    url: "https://bapaspwt.com",
+    url: "https://bapaspurwokerto.id/",
     siteName: "Bapas Purwokerto",
     type: "website",
+  },
+  verification: {
+    google: "googlec82fac7c7df83869.html",
   },
 };
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 
@@ -10,15 +10,46 @@ import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [serviceOpen, setServiceOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const { data: session } = useSession();
-  const menus = [
+  type MenuItem =
+    | {
+        name: string;
+        href: string;
+      }
+    | {
+        name: string;
+        dropdown: true;
+      };
+
+  const menus: MenuItem[] = [
     { name: "Beranda", href: "/" },
     { name: "Profil", href: "/profil" },
+    { name: "Layanan Umum", dropdown: true },
     { name: "Pengaduan", href: "/pengaduan" },
     { name: "Berita", href: "/berita" },
     { name: "Publikasi", href: "/publikasi" },
+  ];
+
+  const layananMenu = [
+    {
+      name: "Tracking Litmas Dewasa",
+      href: "/litmas",
+    },
+    {
+      name: "Tracking Litmas Anak",
+      href: "/litmas-anak",
+    },
+    {
+      name: "SIBATAPAS (Buku Tamu dan Apel Klien)",
+      href: "https://sibatapas.vercel.app/",
+    },
+    {
+      name: "Survei SPAK dan SPKP",
+      href: "https://star-survei3a.kemenimipas.go.id/ly/oBs4KCrb",
+    },
   ];
 
   return (
@@ -45,6 +76,39 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden items-center gap-8 md:flex">
           {menus.map((menu) => {
+            if ("dropdown" in menu) {
+              return (
+                <div key={menu.name} className="relative">
+                  <button
+                    onClick={() => setServiceOpen(!serviceOpen)}
+                    className="flex items-center gap-1 text-sm font-medium text-[#44464F] transition hover:text-primary"
+                  >
+                    Layanan Umum
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${
+                        serviceOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {serviceOpen && (
+                    <div className="absolute left-0 top-full mt-3 w-64 overflow-hidden rounded-xl  bg-white shadow-xl">
+                      {layananMenu.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block px-4 py-3 hover:bg-gray-50"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             const isActive = pathname === menu.href;
 
             return (
@@ -53,7 +117,7 @@ export default function Navbar() {
                 href={menu.href}
                 className={`text-sm font-medium transition-all duration-300 hover:text-primary ${
                   isActive
-                    ? "text-tertiary border-b-2 border-tertiary"
+                    ? "border-b-2 border-tertiary text-tertiary"
                     : "text-[#44464F]"
                 }`}
               >
@@ -123,6 +187,46 @@ export default function Navbar() {
       >
         <div className="space-y-2 border-t border-primary/10  px-4 py-4">
           {menus.map((menu, index) => {
+            if ("dropdown" in menu) {
+              return (
+                <div key={menu.name} className="overflow-hidden rounded-xl ">
+                  <button
+                    onClick={() => setServiceOpen(!serviceOpen)}
+                    className="flex w-full items-center justify-between px-4 py-3"
+                  >
+                    <span className="text-sm font-medium">Layanan Umum</span>
+
+                    <ChevronDown
+                      size={18}
+                      className={`transition-transform ${
+                        serviceOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  <div
+                    className={`transition-all duration-300 ${
+                      serviceOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    } overflow-hidden`}
+                  >
+                    {layananMenu.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => {
+                          setIsOpen(false);
+                          setServiceOpen(false);
+                        }}
+                        className="block px-8 py-3 text-sm text-[#44464F] hover:bg-primary/5"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
             const isActive = pathname === menu.href;
 
             return (
@@ -132,8 +236,8 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`block rounded-xl px-4 py-3 text-sm font-medium transition-all duration-300 ${
                   isActive
-                    ? "bg-primary text-neutral"
-                    : "text-[#44464F] hover:bg-white/10 hover:text-tertiary"
+                    ? "bg-primary text-white"
+                    : "text-[#44464F] hover:bg-primary/5"
                 }`}
                 style={{
                   transitionDelay: `${index * 70}ms`,
