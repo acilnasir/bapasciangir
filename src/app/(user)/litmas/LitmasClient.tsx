@@ -138,14 +138,7 @@ export default function LitmasClient() {
                   </div>
                 </div>
 
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  <div>
-                    <p className="mb-1 text-xs uppercase text-gray-400">
-                      Perkara
-                    </p>
-                    <p className="font-semibold">{item.PERKARA || "-"}</p>
-                  </div>
-
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                   <div>
                     <p className="mb-1 text-xs uppercase text-gray-400">
                       Petugas PK
@@ -159,14 +152,6 @@ export default function LitmasClient() {
                     </p>
                     <p className="font-semibold">{item["ASAL UPT"] || "-"}</p>
                   </div>
-
-                  <div>
-                    <p className="mb-1 text-xs uppercase text-gray-400">
-                      Pendidikan
-                    </p>
-                    <p className="font-semibold">{item.PENDIDIKAN || "-"}</p>
-                  </div>
-
                   <div>
                     <p className="mb-1 text-xs uppercase text-gray-400">
                       Wilayah
