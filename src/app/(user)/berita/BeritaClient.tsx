@@ -108,7 +108,7 @@ export default function BeritaPage() {
     "Semua",
     "Pengumuman",
     "Sosial",
-    "Sosialisai",
+    "Sosialisasi",
     "Event & Ceremonies",
     "Pengabdian kepada Masyarakat",
     "Inovasi",
