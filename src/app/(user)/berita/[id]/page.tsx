@@ -130,6 +130,26 @@ export default async function DetailBeritaPage({ params }: Props) {
   const result = await res.json();
 
   const berita: Berita = result.data;
+  function formatNewsContent(text: string = "") {
+    return (
+      text
+        // gabungkan pecahan gelar / singkatan (Dr. / M. / S.H.)
+        .replace(/([A-Za-z])\.\s*\n\s*([a-z])/g, "$1. $2")
+
+        // gabungkan newline di tengah kalimat
+        .replace(/([a-zA-Z,])\n([a-zA-Z])/g, "$1 $2")
+
+        // bullet normalization
+        .replace(/•|\*/g, "-")
+
+        // rapikan list spacing
+        .replace(/^\s*-\s*/gm, "- ")
+
+        // paragraf otomatis
+        .replace(/\n{2,}/g, "\n\n")
+    );
+  }
+  const formattedContent = formatNewsContent(berita.content);
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -221,29 +241,29 @@ export default async function DetailBeritaPage({ params }: Props) {
           {/* ARTICLE */}
           <div className="rounded-3xl bg-white p-8 shadow-sm">
             {/* EXCERPT */}
-            <p className="text-lg leading-relaxed text-gray-700">
+            <p className="text-lg leading-relaxed text-gray-700 text-justify">
               {berita.excerpt}
             </p>
 
             {/* CONTENT */}
-            <div className="mt-10 max-w-none text-gray-700 text-justify">
+            <div className="mt-10 max-w-none text-gray-700">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
                   p: ({ children }) => (
-                    <p className="mb-5 leading-8 text-[15px] md:text-base">
+                    <p className="mb-5 leading-8 text-[15px] md:text-base text-justify">
                       {children}
                     </p>
                   ),
 
                   h1: ({ children }) => (
-                    <h1 className="text-3xl font-bold mt-8 mb-4 text-primary">
+                    <h1 className="text-3xl font-bold mt-8 mb-2 text-primary">
                       {children}
                     </h1>
                   ),
 
                   h2: ({ children }) => (
-                    <h2 className="text-2xl font-bold mt-8 mb-4 text-primary">
+                    <h2 className="text-2xl font-bold mt-8 mb-2 text-primary">
                       {children}
                     </h2>
                   ),
@@ -269,7 +289,7 @@ export default async function DetailBeritaPage({ params }: Props) {
                   ),
                 }}
               >
-                {berita.content}
+                {formattedContent}
               </ReactMarkdown>
             </div>
 
