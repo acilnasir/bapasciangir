@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
+import ReactMarkdown from "react-markdown";
 import { CalendarDays, User } from "lucide-react";
 import ShareButtons from "@/app/components/atoms/ShareButtons";
+import remarkGfm from "remark-gfm";
 
 interface Tag {
   tag: {
@@ -225,8 +226,51 @@ export default async function DetailBeritaPage({ params }: Props) {
             </p>
 
             {/* CONTENT */}
-            <div className="prose prose-lg mt-10 max-w-none text-gray-700 text-justify">
-              <p>{berita.content}</p>
+            <div className="mt-10 max-w-none text-gray-700 text-justify">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  p: ({ children }) => (
+                    <p className="mb-5 leading-8 text-[15px] md:text-base">
+                      {children}
+                    </p>
+                  ),
+
+                  h1: ({ children }) => (
+                    <h1 className="text-3xl font-bold mt-8 mb-4 text-primary">
+                      {children}
+                    </h1>
+                  ),
+
+                  h2: ({ children }) => (
+                    <h2 className="text-2xl font-bold mt-8 mb-4 text-primary">
+                      {children}
+                    </h2>
+                  ),
+
+                  ul: ({ children }) => (
+                    <ul className="list-disc pl-6 mb-5 space-y-2">
+                      {children}
+                    </ul>
+                  ),
+
+                  li: ({ children }) => (
+                    <li className="leading-7 text-gray-700">{children}</li>
+                  ),
+
+                  a: ({ children, href }) => (
+                    <a
+                      href={href}
+                      className="text-blue-600 underline hover:text-blue-800"
+                      target="_blank"
+                    >
+                      {children}
+                    </a>
+                  ),
+                }}
+              >
+                {berita.content}
+              </ReactMarkdown>
             </div>
 
             {/* TAGS */}

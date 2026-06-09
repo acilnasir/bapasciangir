@@ -9,40 +9,59 @@ import CTASection from "../components/views/cta";
 import CTAKandaSection from "../components/views/cta/kanda";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bapaspurwokerto.id"),
+
+  applicationName: "Bapas Purwokerto",
+  category: "Government",
+
   title: "Balai Pemasyarakatan Kelas II Purwokerto",
+
   description:
-    "Website resmi Balai Pemasyarakatan Kelas II Purwokerto. Menyediakan informasi layanan, berita, profil, wilayah kerja, dan kegiatan pembimbingan kemasyarakatan di Banyumas Raya.",
+    "Website resmi Balai Pemasyarakatan Kelas II Purwokerto. Menyediakan informasi layanan publik, berita, profil, Litmas, wilayah kerja, serta kegiatan pembimbingan kemasyarakatan di Banyumas Raya.",
 
   keywords: [
     "Bapas Purwokerto",
     "Balai Pemasyarakatan Purwokerto",
-    "Balai Pemasyarakatan Kelas II Purwokerto",
-    "Pemasyarakatan",
-    "Banyumas",
+    "Bapas Kelas II Purwokerto",
+    "Pemasyarakatan Indonesia",
+    "Banyumas Raya",
     "Pembimbing Kemasyarakatan",
     "Litmas",
-    "Pendampingan Anak Berhadapan dengan Hukum",
+    "Layanan Publik Pemasyarakatan",
   ],
 
   alternates: {
-    canonical: "https://bapaspurwokerto.id",
+    canonical: "/",
   },
 
   openGraph: {
     title: "Balai Pemasyarakatan Kelas II Purwokerto",
-    description: "Website resmi Balai Pemasyarakatan Kelas II Purwokerto.",
-    url: "https://bapaspurwokerto.id",
+    description:
+      "Website resmi Balai Pemasyarakatan Kelas II Purwokerto - layanan publik, berita, profil, dan informasi pemasyarakatan.",
+    url: "/",
     siteName: "Bapas Purwokerto",
     locale: "id_ID",
     type: "website",
     images: [
       {
-        url: "https://bapaspurwokerto.id/image/kantor.jpg",
+        url: "/image/kantor.jpg",
         width: 1200,
         height: 630,
         alt: "Gedung Bapas Purwokerto",
       },
     ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Bapas Purwokerto",
+    description: "Website resmi Balai Pemasyarakatan Kelas II Purwokerto.",
+    images: ["/image/kantor.jpg"],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

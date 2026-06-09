@@ -4,7 +4,7 @@ import { Baby, User } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section className="py-16">
+    <section id="cta" className="py-16">
       <div className="container mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid items-center gap-12 rounded-2xl bg-neutral p-10 shadow-sm md:grid-cols-2">
           {/* Content */}

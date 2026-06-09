@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PengaduanClient from "./PengaduanClient";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bapaspurwokerto.id"),
   title: "Pengaduan Masyarakat",
   description:
     "Layanan Pengaduan Masyarakat Balai Pemasyarakatan Kelas II Purwokerto. Sampaikan laporan, kritik, saran, atau pengaduan terkait pelayanan secara mudah, aman, dan transparan.",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     title: "Pengaduan Masyarakat",
     description:
       "Sampaikan pengaduan, kritik, dan saran terkait pelayanan Balai Pemasyarakatan Kelas II Purwokerto.",
-    url: "https://bapaspurwokerto.id/pengaduan",
+    url: "/pengaduan",
     siteName: "Bapas Purwokerto",
     type: "website",
     locale: "id_ID",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://bapaspurwokerto.id/pengaduan",
+    canonical: "/pengaduan",
   },
 
   robots: {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LitmasAnakClient from "./LitmasAnakClient";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bapaspurwokerto.id"),
   title: "Tracking Litmas Anak",
 
   description:
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     description:
       "Pantau status penelitian kemasyarakatan (Litmas) secara online melalui layanan resmi Bapas Kelas II Purwokerto.",
 
-    url: "https://bapaspurwokerto.id/litmas-anak",
+    url: "/litmas-anak",
 
     siteName: "Bapas Purwokerto",
 
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://bapaspurwokerto.id/litmas-anak",
+    canonical: "/litmas-anak",
   },
 
   robots: {

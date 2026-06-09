@@ -2,26 +2,32 @@ import type { Metadata } from "next";
 import PublikasiClient from "./PublikasiClient";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bapaspurwokerto.id"),
+
   title: "Publikasi Dokumen Bapas Purwokerto",
+
   description:
     "Akses dokumen publik Balai Pemasyarakatan Kelas II Purwokerto, meliputi laporan kinerja, perencanaan strategis, transparansi anggaran, dan dokumen publik lainnya.",
 
   keywords: [
-    "Publikasi Dokumen",
+    "Publikasi Bapas Purwokerto",
     "Dokumen Publik",
-    "Laporan Kinerja Bapas",
-    "Transparansi Anggaran",
-    "Bapas Purwokerto",
-    "Dokumen Pemasyarakatan",
-    "Laporan Tahunan",
-    "Informasi Publik",
+    "Laporan Kinerja Bapas Purwokerto",
+    "Transparansi Anggaran Bapas",
+    "Informasi Publik Bapas",
+    "Bapas Kelas II Purwokerto",
+    "Laporan Tahunan Pemasyarakatan",
   ],
+
+  alternates: {
+    canonical: "/publikasi",
+  },
 
   openGraph: {
     title: "Publikasi Dokumen | Bapas Purwokerto",
     description:
-      "Akses berbagai dokumen publik dan informasi transparansi anggaran Balai Pemasyarakatan Kelas II Purwokerto.",
-    url: "https://bapaspurwokerto.id/publikasi",
+      "Akses dokumen publik, laporan kinerja, dan transparansi anggaran Balai Pemasyarakatan Kelas II Purwokerto.",
+    url: "/publikasi",
     siteName: "Bapas Purwokerto",
     locale: "id_ID",
     type: "website",
@@ -38,13 +44,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Publikasi Dokumen | Bapas Purwokerto",
-    description:
-      "Dokumen publik, laporan kinerja, dan transparansi anggaran Bapas Purwokerto.",
+    description: "Dokumen publik dan transparansi anggaran Bapas Purwokerto.",
     images: ["/image/logo_pemasyarakatan.png"],
-  },
-
-  alternates: {
-    canonical: "https://bapaspurwokerto.id/publikasi",
   },
 
   robots: {

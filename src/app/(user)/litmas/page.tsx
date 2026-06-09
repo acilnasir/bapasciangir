@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import LitmasClient from "./LitmasClient";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bapaspurwokerto.id"),
+
   title: "Tracking Litmas Dewasa",
 
   description:
@@ -14,27 +16,17 @@ export const metadata: Metadata = {
     "Cek Status Litmas",
     "Penelitian Kemasyarakatan",
     "Bapas Purwokerto",
-    "Balai Pemasyarakatan Purwokerto",
     "Status Litmas",
-    "Layanan Litmas",
-    "Pemasyarakatan",
-    "Kementerian Imigrasi dan Pemasyarakatan",
-    "Klien Pemasyarakatan",
   ],
 
   openGraph: {
     title: "Tracking Litmas Dewasa",
     description:
       "Pantau status penelitian kemasyarakatan (Litmas) secara online melalui layanan resmi Bapas Kelas II Purwokerto.",
-
-    url: "https://bapaspurwokerto.id/litmas",
-
+    url: "/litmas",
     siteName: "Bapas Purwokerto",
-
     type: "website",
-
     locale: "id_ID",
-
     images: [
       {
         url: "/image/logo_pemasyarakatan.png",
@@ -47,17 +39,14 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-
     title: "Tracking Litmas Dewasa | Bapas Purwokerto",
-
     description:
       "Layanan pencarian dan pelacakan status Litmas Dewasa Bapas Kelas II Purwokerto.",
-
     images: ["/image/logo_pemasyarakatan.png"],
   },
 
   alternates: {
-    canonical: "https://bapaspurwokerto.id/litmas",
+    canonical: "/litmas",
   },
 
   robots: {

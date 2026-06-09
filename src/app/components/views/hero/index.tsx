@@ -16,6 +16,7 @@ export default async function HeroSection() {
       description:
         "Penyusunan laporan litmas untuk kepentingan peradilan dan pembimbingan warga binaan.",
       icon: FileText,
+      href: "#cta",
     },
     {
       title: "Pembimbingan",
@@ -152,33 +153,21 @@ export default async function HeroSection() {
             {services.map((service, index) => {
               const Icon = service.icon;
 
-              return (
+              const CardContent = (
                 <div
-                  key={index}
                   className="
-                    group
-                    rounded-3xl
-                    border
-                    border-slate-200
-                    bg-white
-                    p-8
-                    shadow-sm
-                    transition-all
-                    duration-300
-                    
-                    hover:border-primary/20
-                    hover:shadow-lg
-                  "
+  group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm
+  transition-all hover:border-primary/20 hover:shadow-lg
+  h-full flex flex-col
+"
                 >
-                  {/* Icon */}
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition group-hover:bg-primary">
                     <Icon
                       size={30}
-                      className="text-primary transition group-hover:text-white"
+                      className="text-primary group-hover:text-white"
                     />
                   </div>
 
-                  {/* Content */}
                   <h3 className="mt-6 text-xl font-semibold text-primary">
                     {service.title}
                   </h3>
@@ -188,6 +177,16 @@ export default async function HeroSection() {
                   </p>
                 </div>
               );
+
+              if (service.href) {
+                return (
+                  <Link key={index} href={service.href}>
+                    {CardContent}
+                  </Link>
+                );
+              }
+
+              return <div key={index}>{CardContent}</div>;
             })}
           </div>
         </div>
