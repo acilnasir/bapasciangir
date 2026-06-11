@@ -42,7 +42,7 @@ export default function CTASection() {
           {/* Illustration */}
           <div className="flex justify-center">
             <Image
-              src="https://lh3.googleusercontent.com/aida/AP1WRLs2w1yYRd6SMpOfLCmh8f31eVw6eHaZw0BCqBFeaiXphZ_bH9oSUVZclFkiU2cvrWzysjIqMmzhZCOMTQ6w9xycpJHEx9IHTJnJJc3HnWcu8ZkQpMyMOtUtPxj-oKKehdDJC5SZe7AqqiQ1sKP34NmaY8eSdtNb7GgRGG6bF-5B7MZknx1s9MzJ-ZPMPkperX_EqVFZZkZiH7B5psf_YygRfR6XJKlJ8215yfOXcjzNZcSlAFBdcBO3iw"
+              src="/image/screen.png"
               alt="Litmas Status Check"
               width={500}
               height={400}

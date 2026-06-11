@@ -92,8 +92,7 @@ export default function CTAKandaSection() {
             <div
               className="hidden min-h-87.5 bg-cover bg-center md:block"
               style={{
-                backgroundImage:
-                  "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkflaqBol4G-dSCKhDaOowDe-DPq28_LeyhuEp3ni3UeqLpe05Tk-zrQb3-BprUouEJXw8m8zXxkSavSx6Ap71055HROP9m6S78Iqudv3glcY52284t8k5uw78_iFgBLNFqV-_WHgQylvJqiZlKFaAQ2EAU5YSAiC2IpHquDc6wWIqce9Bq2S9cCp1x0v2VCzUeuSPyW18ixL_RrzfYtUVT93YLYu51kdul-Ei-v5YAZ9JyBXvm9oOs2PSh5gUIggoFj1H7itwR3Y')",
+                backgroundImage: "url('/image/unnamed.png')",
               }}
             >
               <div className="h-full w-full bg-primary/40 backdrop-blur-[2px]" />
