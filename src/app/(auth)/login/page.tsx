@@ -80,7 +80,7 @@ export default function LoginPage() {
             <h1 className="text-3xl font-bold text-primary">Login Pegawai</h1>
 
             <p className="text-gray-500 mt-3">
-              Sistem Informasi Bapas Purwokerto
+              Sistem Informasi Bapas Ciangir
             </p>
           </div>
 
@@ -168,7 +168,7 @@ export default function LoginPage() {
 
         {/* FOOTER */}
         <p className="text-center text-sm text-gray-500 mt-6">
-          © 2026 Bapas Purwokerto — Khusus Pegawai/Admin
+          © 2026 Bapas Ciangir — Khusus Pegawai/Admin
         </p>
       </div>
     </div>

@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import PublikasiClient from "./PublikasiClient";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bapaspurwokerto.id"),
+  metadataBase: new URL("https://www.bapasciangir.id"),
 
-  title: "Publikasi Dokumen Bapas Purwokerto",
+  title: "Publikasi Dokumen Bapas Ciangir",
 
   description:
-    "Akses dokumen publik Balai Pemasyarakatan Kelas II Purwokerto, meliputi laporan kinerja, perencanaan strategis, transparansi anggaran, dan dokumen publik lainnya.",
+    "Akses dokumen publik Balai Pemasyarakatan Kelas II Ciangir, meliputi laporan kinerja, perencanaan strategis, transparansi anggaran, dan dokumen publik lainnya.",
 
   keywords: [
-    "Publikasi Bapas Purwokerto",
+    "Publikasi Bapas Ciangir",
     "Dokumen Publik",
-    "Laporan Kinerja Bapas Purwokerto",
+    "Laporan Kinerja Bapas Ciangir",
     "Transparansi Anggaran Bapas",
     "Informasi Publik Bapas",
-    "Bapas Kelas II Purwokerto",
+    "Bapas Kelas II Ciangir",
     "Laporan Tahunan Pemasyarakatan",
   ],
 
@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Publikasi Dokumen | Bapas Purwokerto",
+    title: "Publikasi Dokumen | Bapas Ciangir",
     description:
-      "Akses dokumen publik, laporan kinerja, dan transparansi anggaran Balai Pemasyarakatan Kelas II Purwokerto.",
+      "Akses dokumen publik, laporan kinerja, dan transparansi anggaran Balai Pemasyarakatan Kelas II Ciangir.",
     url: "/publikasi",
-    siteName: "Bapas Purwokerto",
+    siteName: "Bapas Ciangir",
     locale: "id_ID",
     type: "website",
     images: [
@@ -36,15 +36,15 @@ export const metadata: Metadata = {
         url: "/image/logo_pemasyarakatan.png",
         width: 1200,
         height: 630,
-        alt: "Publikasi Dokumen Bapas Purwokerto",
+        alt: "Publikasi Dokumen Bapas Ciangir",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Publikasi Dokumen | Bapas Purwokerto",
-    description: "Dokumen publik dan transparansi anggaran Bapas Purwokerto.",
+    title: "Publikasi Dokumen | Bapas Ciangir",
+    description: "Dokumen publik dan transparansi anggaran Bapas Ciangir.",
     images: ["/image/logo_pemasyarakatan.png"],
   },
 

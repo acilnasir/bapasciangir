@@ -179,7 +179,7 @@ export default function AdminWilayahKerjaPage() {
           <h1 className="text-3xl font-bold text-primary">Wilayah Kerja</h1>
 
           <p className="mt-2 text-gray-500">
-            Kelola data wilayah kerja Bapas Purwokerto
+            Kelola data wilayah kerja Bapas Ciangir
           </p>
         </div>
 

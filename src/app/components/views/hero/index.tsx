@@ -275,7 +275,7 @@ export default async function HeroSection() {
                       </h2>
 
                       <p className="mt-2 text-gray-500">
-                        Data realisasi anggaran Bapas Kelas II Purwokerto Tahun{" "}
+                        Data realisasi anggaran Bapas Kelas II Ciangir Tahun{" "}
                         {tahun}
                       </p>
                     </div>

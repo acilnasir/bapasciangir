@@ -209,7 +209,7 @@ export default function PublikasiClient() {
                       </h2>
 
                       <p className="mt-2 text-gray-500">
-                        Data realisasi anggaran Bapas Kelas II Purwokerto
+                        Data realisasi anggaran Bapas Kelas II Ciangir
                       </p>
                     </div>
                   </div>

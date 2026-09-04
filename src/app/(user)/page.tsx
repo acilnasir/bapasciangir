@@ -9,20 +9,20 @@ import CTASection from "../components/views/cta";
 import CTAKandaSection from "../components/views/cta/kanda";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bapaspurwokerto.id"),
+  metadataBase: new URL("https://www.bapasciangir.id"),
 
-  applicationName: "Bapas Purwokerto",
+  applicationName: "Bapas Ciangir",
   category: "Government",
 
-  title: "Balai Pemasyarakatan Kelas II Purwokerto",
+  title: "Balai Pemasyarakatan Kelas II Ciangir",
 
   description:
-    "Website resmi Balai Pemasyarakatan Kelas II Purwokerto. Menyediakan informasi layanan publik, berita, profil, Litmas, wilayah kerja, serta kegiatan pembimbingan kemasyarakatan di Banyumas Raya.",
+    "Website resmi Balai Pemasyarakatan Kelas II Ciangir. Menyediakan informasi layanan publik, berita, profil, Litmas, wilayah kerja, serta kegiatan pembimbingan kemasyarakatan di Banyumas Raya.",
 
   keywords: [
-    "Bapas Purwokerto",
-    "Balai Pemasyarakatan Purwokerto",
-    "Bapas Kelas II Purwokerto",
+    "Bapas Ciangir",
+    "Balai Pemasyarakatan Ciangir",
+    "Bapas Kelas II Ciangir",
     "Pemasyarakatan Indonesia",
     "Banyumas Raya",
     "Pembimbing Kemasyarakatan",
@@ -35,11 +35,11 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Balai Pemasyarakatan Kelas II Purwokerto",
+    title: "Balai Pemasyarakatan Kelas II Ciangir",
     description:
-      "Website resmi Balai Pemasyarakatan Kelas II Purwokerto - layanan publik, berita, profil, dan informasi pemasyarakatan.",
+      "Website resmi Balai Pemasyarakatan Kelas II Ciangir - layanan publik, berita, profil, dan informasi pemasyarakatan.",
     url: "/",
-    siteName: "Bapas Purwokerto",
+    siteName: "Bapas Ciangir",
     locale: "id_ID",
     type: "website",
     images: [
@@ -47,15 +47,15 @@ export const metadata: Metadata = {
         url: "/image/kantor.jpg",
         width: 1200,
         height: 630,
-        alt: "Gedung Bapas Purwokerto",
+        alt: "Gedung Bapas Ciangir",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Bapas Purwokerto",
-    description: "Website resmi Balai Pemasyarakatan Kelas II Purwokerto.",
+    title: "Bapas Ciangir",
+    description: "Website resmi Balai Pemasyarakatan Kelas II Ciangir.",
     images: ["/image/kantor.jpg"],
   },
 

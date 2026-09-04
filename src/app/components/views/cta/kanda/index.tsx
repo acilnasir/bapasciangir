@@ -69,7 +69,7 @@ export default function CTAKandaSection() {
 
                 <p className="mt-3 max-w-xl text-lg text-white/80">
                   Asisten Digital Layanan Pemasyarakatan untuk mendukung
-                  optimalisasi kinerja pegawai Bapas Purwokerto.
+                  optimalisasi kinerja pegawai Bapas Ciangir.
                 </p>
               </div>
 

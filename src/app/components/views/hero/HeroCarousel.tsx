@@ -69,7 +69,7 @@ export default function HeroCarousel() {
                   <div className="mx-auto w-full max-w-7xl px-4 md:px-10">
                     <div className="max-w-2xl text-white">
                       <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl">
-                        Selamat Datang di Bapas Kelas II Purwokerto
+                        Selamat Datang di Bapas Kelas II Ciangir
                       </h1>
 
                       <p className="mb-8 text-lg leading-8 text-blue-100">

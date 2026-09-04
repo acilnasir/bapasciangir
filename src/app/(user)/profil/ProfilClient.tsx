@@ -88,7 +88,7 @@ export default async function ProfilClient() {
           </h1>
 
           <p className="mt-5 text-gray-600">
-            Balai Pemasyarakatan (Bapas) Kelas II Purwokerto adalah unit
+            Balai Pemasyarakatan (Bapas) Kelas II Ciangir adalah unit
             pelaksana teknis di bawah Kementerian Imigrasi dan Pemasyarakatan
             yang berfokus pada pembimbingan kemasyarakatan.
           </p>
@@ -612,7 +612,7 @@ export default async function ProfilClient() {
           </h2>
 
           <p className="mt-2 text-center text-sm text-gray-500">
-            Perjalanan panjang Bapas Purwokerto
+            Perjalanan panjang Bapas Ciangir
           </p>
 
           {/* TIMELINE WRAPPER */}
@@ -625,25 +625,25 @@ export default async function ProfilClient() {
                 {
                   year: "1977",
                   title: "Pendirian",
-                  desc: "Bapas Purwokerto resmi berdiri sebagai pelaksana pembimbingan kemasyarakatan.",
+                  desc: "Bapas Ciangir resmi berdiri sebagai pelaksana pembimbingan kemasyarakatan.",
                   active: false,
                 },
                 {
                   year: "1979",
                   title: "Berpindah Gedung",
-                  desc: "Bapas Purwokerto berpindah ke lokasi kantor baru guna meningkatkan kualitas pelayanan pembimbingan kemasyarakatan serta mendukung kegiatan administrasi yang semakin berkembang.",
+                  desc: "Bapas Ciangir berpindah ke lokasi kantor baru guna meningkatkan kualitas pelayanan pembimbingan kemasyarakatan serta mendukung kegiatan administrasi yang semakin berkembang.",
                   active: false,
                 },
                 {
                   year: "1982",
                   title: "Gedung Permanen",
-                  desc: "Pembangunan gedung permanen Bapas Purwokerto menjadi langkah penting dalam memperkuat sarana dan prasarana pelayanan bagi klien pemasyarakatan dan masyarakat.",
+                  desc: "Pembangunan gedung permanen Bapas Ciangir menjadi langkah penting dalam memperkuat sarana dan prasarana pelayanan bagi klien pemasyarakatan dan masyarakat.",
                   active: false,
                 },
                 {
                   year: "2023 - Sekarang",
                   title: "Predikat WBK dan Menuju WBBM",
-                  desc: "Bapas Purwokerto berhasil meraih predikat Wilayah Bebas dari Korupsi (WBK) serta terus berkomitmen mewujudkan Wilayah Birokrasi Bersih dan Melayani (WBBM) melalui peningkatan integritas, inovasi layanan, dan kualitas pelayanan publik.",
+                  desc: "Bapas Ciangir berhasil meraih predikat Wilayah Bebas dari Korupsi (WBK) serta terus berkomitmen mewujudkan Wilayah Birokrasi Bersih dan Melayani (WBBM) melalui peningkatan integritas, inovasi layanan, dan kualitas pelayanan publik.",
                   active: true,
                 },
               ].map((item, index) => (

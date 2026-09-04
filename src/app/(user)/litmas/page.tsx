@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import LitmasClient from "./LitmasClient";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bapaspurwokerto.id"),
+  metadataBase: new URL("https://www.bapasciangir.id"),
 
   title: "Tracking Litmas Dewasa",
 
   description:
-    "Layanan Tracking Litmas Dewasa Bapas Kelas II Purwokerto. Cari dan pantau status penelitian kemasyarakatan (Litmas) berdasarkan nama klien secara cepat, transparan, dan mudah diakses.",
+    "Layanan Tracking Litmas Dewasa Bapas Kelas II Ciangir. Cari dan pantau status penelitian kemasyarakatan (Litmas) berdasarkan nama klien secara cepat, transparan, dan mudah diakses.",
 
   keywords: [
     "Tracking Litmas",
@@ -15,16 +15,16 @@ export const metadata: Metadata = {
     "Litmas Dewasa",
     "Cek Status Litmas",
     "Penelitian Kemasyarakatan",
-    "Bapas Purwokerto",
+    "Bapas Ciangir",
     "Status Litmas",
   ],
 
   openGraph: {
     title: "Tracking Litmas Dewasa",
     description:
-      "Pantau status penelitian kemasyarakatan (Litmas) secara online melalui layanan resmi Bapas Kelas II Purwokerto.",
+      "Pantau status penelitian kemasyarakatan (Litmas) secara online melalui layanan resmi Bapas Kelas II Ciangir.",
     url: "/litmas",
-    siteName: "Bapas Purwokerto",
+    siteName: "Bapas Ciangir",
     type: "website",
     locale: "id_ID",
     images: [
@@ -32,16 +32,16 @@ export const metadata: Metadata = {
         url: "/image/logo_pemasyarakatan.png",
         width: 1200,
         height: 630,
-        alt: "Tracking Litmas Dewasa Bapas Purwokerto",
+        alt: "Tracking Litmas Dewasa Bapas Ciangir",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Tracking Litmas Dewasa | Bapas Purwokerto",
+    title: "Tracking Litmas Dewasa | Bapas Ciangir",
     description:
-      "Layanan pencarian dan pelacakan status Litmas Dewasa Bapas Kelas II Purwokerto.",
+      "Layanan pencarian dan pelacakan status Litmas Dewasa Bapas Kelas II Ciangir.",
     images: ["/image/logo_pemasyarakatan.png"],
   },
 

@@ -71,7 +71,7 @@ export default function WilayahClient() {
             </h1>
 
             <p className="mb-8 text-lg leading-relaxed text-gray-600">
-              Bapas Purwokerto menaungi wilayah{" "}
+              Bapas Ciangir menaungi wilayah{" "}
               <span className="font-semibold text-tertiary">
                 Banyumas, Purbalingga, Banjarnegara, dan Kebumen
               </span>{" "}

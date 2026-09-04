@@ -122,7 +122,7 @@ export default function PengaduanClient() {
 
               <p className="mt-5 text-center text-lg leading-relaxed text-white/80">
                 Laporkan segala kendala atau ketidaksesuaian pelayanan demi
-                mewujudkan Bapas Purwokerto yang berintegritas dan transparan.
+                mewujudkan Bapas Ciangir yang berintegritas dan transparan.
               </p>
             </div>
           </div>
@@ -378,7 +378,7 @@ export default function PengaduanClient() {
 
                 <div className="flex items-center gap-3 text-sm">
                   <Mail size={16} />
-                  bapas_purwokerto@yahoo.com
+                  bapas_ciangir@yahoo.com
                 </div>
               </div>
             </div>

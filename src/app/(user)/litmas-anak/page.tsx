@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import LitmasAnakClient from "./LitmasAnakClient";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bapaspurwokerto.id"),
+  metadataBase: new URL("https://www.bapasciangir.id"),
   title: "Tracking Litmas Anak",
 
   description:
-    "Layanan Tracking Litmas Anak Bapas Kelas II Purwokerto. Cari dan pantau status penelitian kemasyarakatan (Litmas) berdasarkan nama klien secara cepat, transparan, dan mudah diakses.",
+    "Layanan Tracking Litmas Anak Bapas Kelas II Ciangir. Cari dan pantau status penelitian kemasyarakatan (Litmas) berdasarkan nama klien secara cepat, transparan, dan mudah diakses.",
 
   keywords: [
     "Tracking Litmas",
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     "Litmas Anak",
     "Cek Status Litmas",
     "Penelitian Kemasyarakatan",
-    "Bapas Purwokerto",
-    "Balai Pemasyarakatan Purwokerto",
+    "Bapas Ciangir",
+    "Balai Pemasyarakatan Ciangir",
     "Status Litmas",
     "Layanan Litmas",
     "Pemasyarakatan",
@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tracking Litmas Anak",
     description:
-      "Pantau status penelitian kemasyarakatan (Litmas) secara online melalui layanan resmi Bapas Kelas II Purwokerto.",
+      "Pantau status penelitian kemasyarakatan (Litmas) secara online melalui layanan resmi Bapas Kelas II Ciangir.",
 
     url: "/litmas-anak",
 
-    siteName: "Bapas Purwokerto",
+    siteName: "Bapas Ciangir",
 
     type: "website",
 
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: "/image/logo_pemasyarakatan.png",
         width: 1200,
         height: 630,
-        alt: "Tracking Litmas Anak Bapas Purwokerto",
+        alt: "Tracking Litmas Anak Bapas Ciangir",
       },
     ],
   },
@@ -49,10 +49,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Tracking Litmas Anak | Bapas Purwokerto",
+    title: "Tracking Litmas Anak | Bapas Ciangir",
 
     description:
-      "Layanan pencarian dan pelacakan status Litmas Anak Bapas Kelas II Purwokerto.",
+      "Layanan pencarian dan pelacakan status Litmas Anak Bapas Kelas II Ciangir.",
 
     images: ["/image/logo_pemasyarakatan.png"],
   },

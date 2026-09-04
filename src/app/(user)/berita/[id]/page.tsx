@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     if (!res.ok) {
       return {
-        title: "Berita | Bapas Purwokerto",
+        title: "Berita | Bapas Ciangir",
       };
     }
 
@@ -64,8 +64,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       keywords: [
         berita.title,
         berita.category,
-        "Berita Bapas Purwokerto",
-        "Bapas Purwokerto",
+        "Berita Bapas Ciangir",
+        "Bapas Ciangir",
         "Pemasyarakatan",
       ],
 
@@ -77,7 +77,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: berita.title,
         description: berita.excerpt,
         url: `${siteUrl}/berita/${id}`,
-        siteName: "Bapas Purwokerto",
+        siteName: "Bapas Ciangir",
         locale: "id_ID",
         type: "article",
 
@@ -109,7 +109,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   } catch {
     return {
-      title: "Berita | Bapas Purwokerto",
+      title: "Berita | Bapas Ciangir",
     };
   }
 }

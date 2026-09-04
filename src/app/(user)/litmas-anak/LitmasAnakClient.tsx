@@ -233,7 +233,7 @@ export default function LitmasAnakClient() {
                 </div>
 
                 <div className="mt-6 border-t pt-4 text-sm text-gray-500">
-                  Data ini berasal dari E-Distribusi Bapas Purwokerto.
+                  Data ini berasal dari E-Distribusi Bapas Ciangir.
                 </div>
               </div>
             );

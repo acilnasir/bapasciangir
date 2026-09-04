@@ -14,7 +14,7 @@ export default function InfografisSection() {
 
             <p className="mt-3 text-base leading-relaxed text-gray-600">
               Pantau data terkini operasional dan pelayanan Bapas Kelas II
-              Purwokerto secara real-time.
+              Ciangir secara real-time.
             </p>
           </div>
 

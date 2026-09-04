@@ -21,7 +21,7 @@ export default function FooterSection() {
 
             <p className="text-gray-600 leading-relaxed mb-8 max-w-xl">
               Dapatkan informasi terbaru mengenai kegiatan, pelayanan,
-              publikasi, dan informasi resmi Bapas Purwokerto melalui media
+              publikasi, dan informasi resmi Bapas Ciangir melalui media
               sosial kami.
             </p>
 
@@ -49,7 +49,7 @@ export default function FooterSection() {
               </Link>
 
               <Link
-                href="https://www.tiktok.com/@bapas_purwokerto?_t=ZS-8zxONV2Utfd&_r=1"
+                href="https://www.tiktok.com/@bapas_ciangir?_t=ZS-8zxONV2Utfd&_r=1"
                 className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
               >
                 <FaTiktok size={20} />
@@ -63,7 +63,7 @@ export default function FooterSection() {
               </Link>
 
               <Link
-                href="https://youtube.com/@bapaspurwokerto4891?si=qPFt068MzJXDhKfC"
+                href="https://youtube.com/@bapasciangir4891?si=qPFt068MzJXDhKfC"
                 className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
               >
                 <FaYoutube size={20} />
@@ -135,13 +135,13 @@ export default function FooterSection() {
                   <h2 className="text-2xl font-bold leading-tight">
                     Bapas
                     <br />
-                    Purwokerto
+                    Ciangir
                   </h2>
                 </div>
               </div>
 
               <p className="text-gray-300 leading-relaxed text-sm">
-                Balai Pemasyarakatan Kelas II Purwokerto di bawah naungan
+                Balai Pemasyarakatan Kelas II Ciangir di bawah naungan
                 Kementerian Imigrasi dan Pemasyarakatan.
               </p>
 
@@ -160,7 +160,7 @@ export default function FooterSection() {
                   <FaThreads size={18} />
                 </Link>
                 <Link
-                  href="https://www.tiktok.com/@bapas_purwokerto?_t=ZS-8zxONV2Utfd&_r=1"
+                  href="https://www.tiktok.com/@bapas_ciangir?_t=ZS-8zxONV2Utfd&_r=1"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300"
                 >
                   <FaTiktok size={18} />
@@ -178,7 +178,7 @@ export default function FooterSection() {
                   <FaFacebookF size={18} />
                 </Link>
                 <Link
-                  href="https://youtube.com/@bapaspurwokerto4891?si=qPFt068MzJXDhKfC"
+                  href="https://youtube.com/@bapasciangir4891?si=qPFt068MzJXDhKfC"
                   className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300"
                 >
                   <FaYoutube size={18} />
@@ -210,7 +210,7 @@ export default function FooterSection() {
                 <div className="flex gap-3">
                   <Mail size={18} className="mt-0.5" />
 
-                  <p>bapas_purwokerto@yahoo.com</p>
+                  <p>bapas_ciangir@yahoo.com</p>
                 </div>
               </div>
             </div>
@@ -257,7 +257,7 @@ export default function FooterSection() {
 
               <div className="overflow-hidden rounded-2xl border border-white/10 h-56">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.2383731777027!2d109.2670469747622!3d-7.4388558925720085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655c02d35ef92b%3A0x801f9dff2fa1c1f1!2sBalai%20Pemasyarakatan%20Kelas%20II%20Purwokerto!5e0!3m2!1sid!2sid!4v1779680981593!5m2!1sid!2sid"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.2383731777027!2d109.2670469747622!3d-7.4388558925720085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655c02d35ef92b%3A0x801f9dff2fa1c1f1!2sBalai%20Pemasyarakatan%20Kelas%20II%20Ciangir!5e0!3m2!1sid!2sid!4v1779680981593!5m2!1sid!2sid"
                   className="w-full h-full"
                   loading="lazy"
                 />
@@ -267,7 +267,7 @@ export default function FooterSection() {
 
           {/* COPYRIGHT */}
           <div className="border-t border-white/10 pt-6 text-center text-sm text-gray-400">
-            © 2026 Bapas Purwokerto. Seluruh Hak Cipta Dilindungi.
+            © 2026 Bapas Ciangir. Seluruh Hak Cipta Dilindungi.
           </div>
         </div>
       </footer>

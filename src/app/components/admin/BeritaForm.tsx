@@ -109,7 +109,7 @@ export default function BeritaForm() {
             type="text"
             name="tags"
             className="bg-neutral py-2 px-3 w-full rounded-md outline-none mb-4"
-            placeholder="bapas,purwokerto, imipas..."
+            placeholder="bapas,ciangir, imipas..."
           />
         </div>
         {/* IMAGE */}
