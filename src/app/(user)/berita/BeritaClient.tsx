@@ -11,7 +11,6 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { API_URL } from "../../../../lib/api";
 
 interface Tag {
   tag: {
@@ -37,7 +36,7 @@ interface Berita {
 
 async function getArticles() {
   try {
-    const res = await fetch(`${API_URL}/api/berita`, {
+    const res = await fetch("/api/berita", {
       cache: "no-store",
     });
 
