@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
 
     let fotoUrl: string | null = null;
 
-    if (foto) {
+    if (foto && foto.size > 0) {
       const buffer = Buffer.from(await foto.arrayBuffer());
       const uploadResult = await uploadToCloudinary(buffer);
       fotoUrl = uploadResult.secure_url;
