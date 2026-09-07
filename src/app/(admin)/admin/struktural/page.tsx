@@ -153,6 +153,7 @@ export default function AdminPejabatPage() {
             <option value="KASUBSI_BKD">KASUBSI BKD</option>
             <option value="KASUBSI_BKA">KASUBSI BKA</option>
             <option value="KAUR_TU">KAUR TU</option>
+            <option value="PK_MADYA">PK MADYA</option>
           </select>
 
           <input
