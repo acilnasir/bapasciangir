@@ -17,7 +17,7 @@ export default function AdminPejabatPage() {
   const [form, setForm] = useState({
     id: "",
     nama: "",
-    jabatan: "",
+    jabatan: "KABAPAS",
     foto: null as File | null,
   });
 
@@ -49,9 +49,14 @@ export default function AdminPejabatPage() {
   };
 
   // =========================
-  // UPDATE (PUT)
+  // CREATE OR UPDATE
   // =========================
-  const handleUpdate = async () => {
+  const handleSave = async () => {
+    if (!form.nama || !form.jabatan) {
+      window.alert("Nama dan jabatan wajib diisi.");
+      return;
+    }
+
     try {
       const formData = new FormData();
 
@@ -64,19 +69,20 @@ export default function AdminPejabatPage() {
       }
 
       const res = await fetch("/api/struktural", {
-        method: "PUT",
+        method: form.id ? "PUT" : "POST",
         body: formData,
       });
 
       if (!res.ok) {
-        throw new Error("Gagal update data");
+        const result = await res.json().catch(() => null);
+        throw new Error(result?.error || "Gagal menyimpan data");
       }
 
       // reset form
       setForm({
         id: "",
         nama: "",
-        jabatan: "",
+        jabatan: "KABAPAS",
         foto: null,
       });
 
@@ -86,12 +92,16 @@ export default function AdminPejabatPage() {
       setData(json.data);
 
       // ✅ SUCCESS ALERT
-      window.alert("Data pejabat berhasil diperbarui!");
+      window.alert(
+        form.id
+          ? "Data pejabat berhasil diperbarui!"
+          : "Data pejabat berhasil disimpan!",
+      );
     } catch (error) {
       console.error(error);
 
       // ❌ ERROR ALERT
-      window.alert("Terjadi kesalahan saat mengupdate data!");
+      window.alert("Terjadi kesalahan saat menyimpan data!");
     }
   };
 
@@ -137,6 +147,12 @@ export default function AdminPejabatPage() {
         <div className="border border-neutral-200 p-4 rounded-lg h-fit">
           <h2 className="font-bold mb-4">Edit Pejabat</h2>
 
+          {data.length === 0 && (
+            <p className="mb-4 text-sm text-gray-500">
+              Belum ada data. Isi formulir untuk menambahkan pejabat.
+            </p>
+          )}
+
           <input
             className="bg-neutral py-2 px-3 w-full rounded-md outline-none mb-4"
             placeholder="Nama"
@@ -165,10 +181,11 @@ export default function AdminPejabatPage() {
           />
 
           <button
-            onClick={handleUpdate}
+            onClick={handleSave}
+            disabled={!form.nama || !form.jabatan}
             className="w-full bg-primary text-white py-2 rounded"
           >
-            Simpan Perubahan
+            {form.id ? "Simpan Perubahan" : "Tambah Pejabat"}
           </button>
         </div>
       </div>

@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
+import ReactMarkdown from "react-markdown";
 import { CalendarDays, User } from "lucide-react";
 import ShareButtons from "@/app/components/atoms/ShareButtons";
+import remarkGfm from "remark-gfm";
 
 interface Tag {
   tag: {
@@ -30,6 +32,91 @@ interface Props {
   }>;
 }
 
+/* =====================================
+   DYNAMIC METADATA
+===================================== */
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/berita/${id}`,
+      {
+        cache: "no-store",
+      },
+    );
+
+    if (!res.ok) {
+      return {
+        title: "Berita | Bapas Ciangir",
+      };
+    }
+
+    const result = await res.json();
+    const berita: Berita = result.data;
+
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+    return {
+      title: berita.title,
+      description: berita.excerpt,
+
+      keywords: [
+        berita.title,
+        berita.category,
+        "Berita Bapas Ciangir",
+        "Bapas Ciangir",
+        "Pemasyarakatan",
+      ],
+
+      alternates: {
+        canonical: `${siteUrl}/berita/${id}`,
+      },
+
+      openGraph: {
+        title: berita.title,
+        description: berita.excerpt,
+        url: `${siteUrl}/berita/${id}`,
+        siteName: "Bapas Ciangir",
+        locale: "id_ID",
+        type: "article",
+
+        publishedTime: berita.createdAt,
+
+        authors: [berita.author],
+
+        images: [
+          {
+            url: berita.thumbnail,
+            width: 1200,
+            height: 630,
+            alt: berita.title,
+          },
+        ],
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: berita.title,
+        description: berita.excerpt,
+        images: [berita.thumbnail],
+      },
+
+      robots: {
+        index: true,
+        follow: true,
+      },
+    };
+  } catch {
+    return {
+      title: "Berita | Bapas Ciangir",
+    };
+  }
+}
+
+/* =====================================
+   PAGE
+===================================== */
 export default async function DetailBeritaPage({ params }: Props) {
   const { id } = await params;
 
@@ -43,9 +130,31 @@ export default async function DetailBeritaPage({ params }: Props) {
   const result = await res.json();
 
   const berita: Berita = result.data;
+  function formatNewsContent(text: string = "") {
+    return (
+      text
+        // gabungkan pecahan gelar / singkatan (Dr. / M. / S.H.)
+        .replace(/([A-Za-z])\.\s*\n\s*([a-z])/g, "$1. $2")
+
+        // gabungkan newline di tengah kalimat
+        .replace(/([a-zA-Z,])\n([a-zA-Z])/g, "$1 $2")
+
+        // bullet normalization
+        .replace(/•|\*/g, "-")
+
+        // rapikan list spacing
+        .replace(/^\s*-\s*/gm, "- ")
+
+        // paragraf otomatis
+        .replace(/\n{2,}/g, "\n\n")
+    );
+  }
+  const formattedContent = formatNewsContent(berita.content);
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
   // URL ARTIKEL
-  const articleUrl = `${process.env.NEXT_PUBLIC_API_URL}/berita/${id}`;
+  const articleUrl = `${siteUrl}/berita/${id}`;
 
   // SHARE TEXT
   const shareText = encodeURIComponent(berita.title);
@@ -132,13 +241,56 @@ export default async function DetailBeritaPage({ params }: Props) {
           {/* ARTICLE */}
           <div className="rounded-3xl bg-white p-8 shadow-sm">
             {/* EXCERPT */}
-            <p className="text-lg leading-relaxed text-gray-700">
+            <p className="text-lg leading-relaxed text-gray-700 text-justify">
               {berita.excerpt}
             </p>
 
             {/* CONTENT */}
-            <div className="prose prose-lg mt-10 max-w-none text-gray-700 text-justify">
-              <p>{berita.content}</p>
+            <div className="mt-10 max-w-none text-gray-700">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  p: ({ children }) => (
+                    <p className="mb-5 leading-8 text-[15px] md:text-base text-justify">
+                      {children}
+                    </p>
+                  ),
+
+                  h1: ({ children }) => (
+                    <h1 className="text-3xl font-bold mt-8 mb-2 text-primary">
+                      {children}
+                    </h1>
+                  ),
+
+                  h2: ({ children }) => (
+                    <h2 className="text-2xl font-bold mt-8 mb-2 text-primary">
+                      {children}
+                    </h2>
+                  ),
+
+                  ul: ({ children }) => (
+                    <ul className="list-disc pl-6 mb-5 space-y-2">
+                      {children}
+                    </ul>
+                  ),
+
+                  li: ({ children }) => (
+                    <li className="leading-7 text-gray-700">{children}</li>
+                  ),
+
+                  a: ({ children, href }) => (
+                    <a
+                      href={href}
+                      className="text-blue-600 underline hover:text-blue-800"
+                      target="_blank"
+                    >
+                      {children}
+                    </a>
+                  ),
+                }}
+              >
+                {formattedContent}
+              </ReactMarkdown>
             </div>
 
             {/* TAGS */}

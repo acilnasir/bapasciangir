@@ -11,7 +11,7 @@ export default function SurveySection() {
 
         <p className="mt-4 max-w-2xl text-gray-600">
           Umpan balik Anda sangat berarti bagi peningkatan kualitas pelayanan di
-          Bapas Purwokerto
+          Bapas Ciangir
         </p>
 
         <Link

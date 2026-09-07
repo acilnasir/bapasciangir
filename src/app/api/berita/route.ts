@@ -40,10 +40,25 @@ export async function POST(req: NextRequest) {
     }
 
     // CREATE SLUG
-    const slug = slugify(title, {
+    let slug = slugify(title, {
       lower: true,
       strict: true,
     });
+
+    let counter = 1;
+
+    while (
+      await prisma.berita.findUnique({
+        where: { slug },
+      })
+    ) {
+      slug = `${slugify(title, {
+        lower: true,
+        strict: true,
+      })}-${counter}`;
+
+      counter++;
+    }
 
     // FILE BUFFER
     const bytes = await image.arrayBuffer();

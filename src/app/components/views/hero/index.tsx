@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Icon from "../../icons";
+import HeroCarousel from "./HeroCarousel";
 
 export default async function HeroSection() {
   const services = [
@@ -16,6 +17,7 @@ export default async function HeroSection() {
       description:
         "Penyusunan laporan litmas untuk kepentingan peradilan dan pembimbingan warga binaan.",
       icon: FileText,
+      href: "#cta",
     },
     {
       title: "Pembimbingan",
@@ -77,56 +79,7 @@ export default async function HeroSection() {
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="
-          relative
-          min-h-screen
-          bg-[url('/image/kantor.jpg')]
-          bg-cover
-          bg-center
-          bg-no-repeat
-        "
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/65" />
-
-        {/* Content */}
-        <div className="relative mx-auto flex min-h-screen max-w-7xl items-center px-4 py-24 md:px-6">
-          <div className="max-w-4xl">
-            <h1 className="mt-6 text-5xl font-bold leading-tight text-neutral md:text-7xl">
-              Selamat Datang di Bapas Kelas II Purwokerto
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-[#D9E2FF]">
-              Melayani dengan Hati, Mengawal dengan Integritas
-            </p>
-
-            <p className="text-lg leading-relaxed text-[#D9E2FF]">
-              Mewujudkan pelayanan pemasyarakatan yang humanis, menjunjung
-              tinggi integritas, serta mendukung terciptanya pemasyarakatan yang
-              pasti bermanfaat untuk masyarakat.
-            </p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              {/* WHATSAPP */}
-              <Link
-                href="https://wa.me/6285138212168"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-xl bg-tertiary px-8 py-4 text-center font-semibold text-primary transition hover:scale-105"
-              >
-                Layanan Kami
-              </Link>
-
-              {/* PROFIL */}
-              <Link
-                href="/profil"
-                className="rounded-xl border border-white/20 bg-white/10 px-8 py-4 text-center font-semibold text-white backdrop-blur transition hover:bg-white/20"
-              >
-                Tentang Kami
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel />
 
       {/* Main Services Section */}
       <section className="bg-neutral py-20">
@@ -152,33 +105,21 @@ export default async function HeroSection() {
             {services.map((service, index) => {
               const Icon = service.icon;
 
-              return (
+              const CardContent = (
                 <div
-                  key={index}
                   className="
-                    group
-                    rounded-3xl
-                    border
-                    border-slate-200
-                    bg-white
-                    p-8
-                    shadow-sm
-                    transition-all
-                    duration-300
-                    
-                    hover:border-primary/20
-                    hover:shadow-lg
-                  "
+  group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm
+  transition-all hover:border-primary/20 hover:shadow-lg
+  h-full flex flex-col
+"
                 >
-                  {/* Icon */}
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 transition group-hover:bg-primary">
                     <Icon
                       size={30}
-                      className="text-primary transition group-hover:text-white"
+                      className="text-primary group-hover:text-white"
                     />
                   </div>
 
-                  {/* Content */}
                   <h3 className="mt-6 text-xl font-semibold text-primary">
                     {service.title}
                   </h3>
@@ -188,6 +129,16 @@ export default async function HeroSection() {
                   </p>
                 </div>
               );
+
+              if (service.href) {
+                return (
+                  <Link key={index} href={service.href}>
+                    {CardContent}
+                  </Link>
+                );
+              }
+
+              return <div key={index}>{CardContent}</div>;
             })}
           </div>
         </div>
@@ -324,7 +275,7 @@ export default async function HeroSection() {
                       </h2>
 
                       <p className="mt-2 text-gray-500">
-                        Data realisasi anggaran Bapas Kelas II Purwokerto Tahun{" "}
+                        Data realisasi anggaran Bapas Kelas II Ciangir Tahun{" "}
                         {tahun}
                       </p>
                     </div>

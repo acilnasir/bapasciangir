@@ -159,7 +159,7 @@ export default function ResultSurveySection() {
         {/* HEADER */}
         <div className="mb-10">
           <h2 className="text-3xl font-bold text-primary md:text-4xl">
-            Hasil Survey Bapas Purwokerto
+            Hasil Survey Bapas Ciangir
           </h2>
 
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-500 md:text-base">

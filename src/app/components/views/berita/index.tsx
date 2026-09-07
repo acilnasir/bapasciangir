@@ -34,7 +34,7 @@ export default async function BeritaSection() {
 
             <p className="mt-4 max-w-2xl text-gray-600">
               Informasi terbaru mengenai kegiatan, layanan, dan pembimbingan
-              kemasyarakatan Bapas Kelas II Purwokerto.
+              kemasyarakatan Bapas Kelas II Ciangir.
             </p>
           </div>
 
