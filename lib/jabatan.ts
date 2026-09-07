@@ -5,5 +5,5 @@ export const JabatanLabel: Record<Jabatan, string> = {
   KASUBSI_BKD: "Ka. Sub. Seksi BKD",
   KASUBSI_BKA: "Ka. Sub. Seksi BKA",
   KAUR_TU: "Kaur Tata Usaha",
-  PK Madya : "Pembimbing Kemasyrakatan Madya"
+  PK_Madya : "Pembimbing Kemasyrakatan Madya"
 };
