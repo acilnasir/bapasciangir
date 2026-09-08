@@ -7,5 +7,4 @@ export const JabatanLabel: Record<Jabatan, string> = {
   KAUR_TU: "Kaur Tata Usaha",
   PK_MADYA: "Pembimbing Kemasyarakatan Madya",
   PK_MUDA: "Pembimbing Kemasyarakatan Muda",
-  PK_PERTAMA: "Pembimbing Kemasyarakatan Pertama",
 };
